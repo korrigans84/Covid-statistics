@@ -1,5 +1,4 @@
 import { Router } from '@reach/router'
-import './App.css';
 import ProfilePage from "./Components/Profile/ProfilePage";
 import SignUp from "./Components/Auth/SignUp";
 import SignIn from "./Components/Auth/SignIn";
@@ -13,7 +12,7 @@ export default function Profile() {
             :
             <Router>
                 <SignUp path="signUp" />
-                <SignIn path="/" />
+                <SignIn path="signIn" />
                 <PasswordReset path = "passwordReset" />
             </Router>
 

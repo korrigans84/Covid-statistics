@@ -1,10 +1,11 @@
-
-import './App.css';
+import SignIn from "./Components/Auth/SignIn";
 
 export default function App() {
   return (
     <>
-      <h1>This is the app</h1>
+      <h1 className="text-primary">
+          <SignIn/>
+      </h1>
     </>
   );
 }

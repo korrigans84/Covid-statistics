@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './assets/styles';
 import App from './App';
 import { Router, Link } from '@reach/router';
 import reportWebVitals from './reportWebVitals';

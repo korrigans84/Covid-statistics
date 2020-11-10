@@ -20,17 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc422da9-8bc3-4710-bb2b-a274a0ef8fea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Auth/PasswordReset.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Auth/SignIn.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Auth/SignUp.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Components/Profile/ProfilePage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Profile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/css/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/PasswordReset.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/PasswordReset.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/SignIn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/SignIn.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/SignUp.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605001783276</updated>
-      <workItem from="1605001784315" duration="1836000" />
+      <workItem from="1605001784315" duration="4691000" />
     </task>
     <servers />
   </component>
