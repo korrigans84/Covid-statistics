@@ -5,12 +5,18 @@ import App from './App';
 import { Router, Link } from '@reach/router';
 import reportWebVitals from './reportWebVitals';
 import ProfilePage from "./Components/Profile/ProfilePage";
+import SignIn from "./Components/Auth/SignIn";
+import SignUp from "./Components/Auth/SignUp";
+import NavBar from "./Components/NavBar";
 
 ReactDOM.render(
   <React.StrictMode>
+      <NavBar />
       <Router>
           <App path="/" />
           <ProfilePage path="profile" />
+          <SignIn path="signin" />
+          <SignUp path="signup" />
       </Router>
   </React.StrictMode>,
   document.getElementById('root')

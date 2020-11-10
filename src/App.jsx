@@ -1,11 +1,13 @@
-import SignIn from "./Components/Auth/SignIn";
+
+import SignUp from "./Components/Auth/SignUp";
+import UserProvider from "./providers/UserProvider";
 
 export default function App() {
   return (
-    <>
-      <h1 className="text-primary">
-          <SignIn/>
+      <UserProvider>
+      <h1 className="text-primary">Covid - statistics
       </h1>
-    </>
+          <SignUp/>
+      </UserProvider>
   );
 }
