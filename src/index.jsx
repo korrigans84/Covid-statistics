@@ -2,11 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { Router, Link } from '@reach/router';
 import reportWebVitals from './reportWebVitals';
+import ProfilePage from "./Components/Profile/ProfilePage";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Router>
+          <App path="/" />
+          <ProfilePage path="profile" />
+      </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
