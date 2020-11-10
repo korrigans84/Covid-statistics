@@ -1,17 +1,26 @@
 import React, {useState} from 'react'
-import {Link} from "@reach/router";
+import {Link, redirectTo} from "@reach/router";
+import {auth, generateUserDocument, signInWithGoogle} from "../../firebase";
 
 export default function SignUp(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [displayName, setDisplayName] = useState("");
     const [error, setError] = useState(null);
-    const createUserWithEmailAndPasswordHandler = (e, email, password) => {
+    const createUserWithEmailAndPasswordHandler = async (e, email, password) => {
         e.preventDefault();
-        setEmail("");
-        setPassword("");
-        setDisplayName("");
+        console.log('ok')
+        try{
+            const {user} = await auth.createUserWithEmailAndPassword(email, password);
+            await generateUserDocument(user, {displayName})
+        }
+        catch(error){
+            setError('Error Signing up with email and password');
+        }
+        redirectTo('/profile');
+
     };
+
     const onChangeHandler = e => {
         const { name, value } = e.currentTarget;
         if (name === "userEmail") {
@@ -79,6 +88,7 @@ export default function SignUp(){
                 </form>
                 <p className="text-center my-3">or</p>
                 <button
+                    onClick = {(e) => {signInWithGoogle()}}
                     className="bg-red-500 hover:bg-red-600 w-full py-2 text-white"
                 >
                     Sign In with Google

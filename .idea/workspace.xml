@@ -20,13 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc422da9-8bc3-4710-bb2b-a274a0ef8fea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Components/NavBar.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/providers/UserProvider.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/SignIn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/SignIn.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Auth/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/SignUp.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Profile/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile/ProfilePage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/firebase.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/UserProvider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/UserProvider.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +70,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605001783276</updated>
-      <workItem from="1605001784315" duration="5491000" />
+      <workItem from="1605001784315" duration="6952000" />
+      <workItem from="1605008799108" duration="5503000" />
     </task>
     <servers />
   </component>
@@ -84,5 +88,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
