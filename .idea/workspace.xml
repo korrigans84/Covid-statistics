@@ -20,16 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc422da9-8bc3-4710-bb2b-a274a0ef8fea" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Components/CardCountry.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CountryPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/css/countryCard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useFetch.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/SignIn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/SignIn.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/SignUp.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Profile/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile/ProfilePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/styles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/firebase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/providers/UserProvider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/UserProvider.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +40,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -57,7 +55,8 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Symfony/SAP" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -72,6 +71,7 @@
       <updated>1605001783276</updated>
       <workItem from="1605001784315" duration="6952000" />
       <workItem from="1605008799108" duration="5503000" />
+      <workItem from="1605080838876" duration="4641000" />
     </task>
     <servers />
   </component>
@@ -89,5 +89,15 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="772" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1605080877075">
+      <screen x="58" y="27" width="1862" height="1053" />
+    </state>
+    <state x="772" y="311" width="424" height="491" key="FileChooserDialogImpl/58.27.1862.1053@58.27.1862.1053" timestamp="1605080877075" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1605085071111">
+      <screen x="58" y="27" width="1862" height="1053" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/58.27.1862.1053@58.27.1862.1053" timestamp="1605085071111" />
   </component>
 </project>
