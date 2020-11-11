@@ -11,4 +11,4 @@ I use React for the frontend part, and ExpressJS for the Backend part.
 I also use Firebase for the noSQL Database, Auth system, and the Storage.
 
 ## About the API 
-For the data, I use this (API)[https://documenter.getpostman.com/view/10808728/SzS8rjbc#00030720-fae3-4c72-8aea-ad01ba17adf8], which provide manny data of the world, and by countries.
+For the data, I use this [API](https://documenter.getpostman.com/view/10808728/SzS8rjbc#00030720-fae3-4c72-8aea-ad01ba17adf8), which provide manny data of the world, and by countries.
