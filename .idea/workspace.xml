@@ -20,13 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc422da9-8bc3-4710-bb2b-a274a0ef8fea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/CountriesPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/Chart.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useFetchForCountry.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/CardCountry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CardCountry.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CountryPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CountryPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/CountriesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CountriesPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/CountryPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CountryPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +39,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -76,7 +76,7 @@
       <updated>1605001783276</updated>
       <workItem from="1605001784315" duration="6952000" />
       <workItem from="1605008799108" duration="5503000" />
-      <workItem from="1605080838876" duration="6092000" />
+      <workItem from="1605080838876" duration="10334000" />
     </task>
     <servers />
   </component>
@@ -104,5 +104,9 @@
       <screen x="58" y="27" width="1862" height="1053" />
     </state>
     <state width="498" height="446" key="SwitcherDM/58.27.1862.1053@58.27.1862.1053" timestamp="1605085071111" />
+    <state x="768" y="466" width="441" height="181" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605091014457">
+      <screen x="58" y="27" width="1862" height="1053" />
+    </state>
+    <state x="768" y="466" width="441" height="181" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/58.27.1862.1053@58.27.1862.1053" timestamp="1605091014457" />
   </component>
 </project>
