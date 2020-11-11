@@ -12,3 +12,18 @@ I also use Firebase for the noSQL Database, Auth system, and the Storage.
 
 ## About the API 
 For the data, I use this [API](https://documenter.getpostman.com/view/10808728/SzS8rjbc#00030720-fae3-4c72-8aea-ad01ba17adf8), which provide many global data, and by countries.
+
+
+## How to run the project
+You must have npm and nodejs installed on your device. 
+```
+git clone  https://github.com/korrigans84/Covid-statistics.git
+cd Covid-statistics    
+npm i 
+cp .env.example .env && nano .env 
+ ```
+here, you must define your own variables, which are nessesary to lauch the app. Then, run
+
+```
+npm start
+```
