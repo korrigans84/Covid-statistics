@@ -1,4 +1,5 @@
-import {Flag, Icon} from "semantic-ui-react";
+import {Button, Flag, Icon} from "semantic-ui-react";
+import {navigate} from "@reach/router";
 
 
 export default function CardCountry({key, country}){
@@ -24,26 +25,10 @@ export default function CardCountry({key, country}){
                     </div>
                 </div>
                 <div className="col-md-12">
-                    
+                    <Button onClick={() => navigate(`/country/${countryCode}`)} color='teal'>See More</Button>
                 </div>
             </div>
         </div>
     </div>
-    //eturn(
-    //   <div className="col-md-4 mb-4">
-    //       <div className="card country-card">
-    //           <img
-    //               src="https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb"
-    //               alt={country.Country} className="background"/>
-    //           <div className="card-content">
-    //               <Flag name={countryCode}/><h3>{country.Country}<small></small></h3>
-    //               <div className="icon-block">
-    //                   <a href="#" className="text-white"><Icon name="user plus"/> {country.NewConfirmed}</a>
-    //                   <a href="#" className="text-white"><Icon name="user cancel"/> {country.NewDeaths}</a>
-    //                   <a href="#" className="text-white"><Icon name="minus"/> {country.NewRecovered}</a>
-    //               </div>
-    //           </div>
-    //       </div>
-    //   </div>
     );
 }

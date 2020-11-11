@@ -1,9 +1,9 @@
 import { Router } from '@reach/router'
-import ProfilePage from "./Components/Profile/ProfilePage";
-import SignUp from "./Components/Auth/SignUp";
-import SignIn from "./Components/Auth/SignIn";
-import PasswordReset from "./Components/Auth/PasswordReset";
-import UserProvider, {UserContext} from "./providers/UserProvider";
+import ProfilePage from "../Components/Profile/ProfilePage";
+import SignUp from "../Components/Auth/SignUp";
+import SignIn from "../Components/Auth/SignIn";
+import PasswordReset from "../Components/Auth/PasswordReset";
+import UserProvider, {UserContext} from "../providers/UserProvider";
 import React, {useContext} from "react";
 
 export default function Profile() {
