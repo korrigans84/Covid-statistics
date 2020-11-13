@@ -10,11 +10,13 @@ import SignUp from "./Components/Auth/SignUp";
 import NavBar from "./Components/NavBar";
 import CountryPage from "./pages/CountryPage";
 import CountriesPage from "./pages/CountriesPage";
+import UserProvider from "./providers/UserProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-      <NavBar />
+      <UserProvider>
       <Router>
+
           <App path="/" />
           <CountriesPage path="countries" />
           <CountryPage path="country/:countryCode" />
@@ -22,6 +24,7 @@ ReactDOM.render(
           <SignIn path="signin" />
           <SignUp path="signup" />
       </Router>
+      </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

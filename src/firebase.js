@@ -1,7 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-import {redirectTo} from "@reach/router";
 
 const  firebaseConfig = {
     apiKey: "AIzaSyCt45-LYrtRlYv9jtNc4-XpJcOMSL0Z-ls",
@@ -18,21 +17,33 @@ const  firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
-//Auth service of FireBase
-const provider = new firebase.auth.GoogleAuthProvider();
-
 
 
 //exports
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
+export const signOut = () =>{
+    auth.signOut()
+        .then(() => console.log('signed out') );
+}
 export const signInWithGoogle = () => {
-    auth.signInWithPopup(provider);
-    redirectTo('/profile')
+    auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+        .then(function() {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            return firebase.auth().signInWithPopup(provider);
+        })
+        .catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode, errorMessage)
+        });
+
 };
 
 //create User table
 export const generateUserDocument = async (user, additionalData) => {
+
     if (!user) return;
     const userRef = firestore.doc(`users/${user.uid}`);
     const snapshot = await userRef.get();

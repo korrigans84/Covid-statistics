@@ -1,7 +1,8 @@
 import React, {useContext} from 'react'
-import {auth} from "../../firebase";
+import {signOut} from "../../firebase";
 import {UserContext} from "../../providers/UserProvider";
 import SignIn from "../Auth/SignIn";
+import NavBar from "../NavBar";
 
 export default function ProfilePage(){
     const user = useContext(UserContext);
@@ -9,9 +10,12 @@ export default function ProfilePage(){
         return (<SignIn />)
     }
     return(
-    <div>
-        <h1>This is the profile page</h1>
-        <button className = "w-full py-3 bg-red-600 mt-4 text-white" onClick = {() => {auth.signOut()}}>Sign out</button>
-    </div>
+        <>
+            <NavBar />
+                <div>
+                    <h1>This is the profile page</h1>
+                    <button className = "btn btn-danger" onClick = {() => {signOut()}}>Sign out</button>
+                </div>
+            </>
 );
 }

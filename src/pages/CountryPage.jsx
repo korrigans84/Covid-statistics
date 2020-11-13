@@ -31,7 +31,6 @@ export default function CountryPage({countryCode}){
             const summary = (countries.filter( function(item){return (item.CountryCode===countryCode.toUpperCase());} ))[0];
             setDataSummary(dataSummary => summary)
 
-            console.log(summary)
         }
 
         setLoading(false)
@@ -41,7 +40,7 @@ export default function CountryPage({countryCode}){
 
     return(
         <div className="container mt-3">
-
+            <h1>{dataSummary && dataSummary.Country}</h1>
             <Chart data={items}/>
         </div>
     )
