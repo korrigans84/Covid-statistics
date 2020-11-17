@@ -4,8 +4,11 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import React, {useEffect, useState} from "react";
 import { AgGridColumn, AgGridReact} from "ag-grid-react";
+import {Flag} from "semantic-ui-react";
+import {useNavigate} from "@reach/router";
 
 export default function CountriesTable(){
+    const navigate = useNavigate();
     const [gridApi, setGridApi] = useState(null);
     const [gridColumnApi, setGridColumnApi] = useState(null);
 
@@ -14,19 +17,23 @@ export default function CountriesTable(){
         const countries = await fetch('https://api.covid19api.com/summary');
         const countriesData = await countries.json();
         setRowData(countriesData.Countries);
-        console.log(rowData)
+        console.log(countriesData.Countries)
     },[])
-
+    function countryRow(country){
+        return { ...country,
+            flag: <Flag name={country.countryCode}/>
+            }
+        }
     function onGridReady(params) {
         setGridApi(params.api);
         setGridColumnApi(params.columnApi);
     }
 
     function handleClickRow(e){
-        console.log('A row was clicked',e.data.CountryCode);
+        navigate(`/country/${e.data.CountryCode}`)
         }
     return (
-        <div className="ag-theme-alpine"  style={ { height: 500, width: "100%" } }>
+        <div className="ag-theme-alpine"  style={ { height: 1000, width: "100%" } }>
             <AgGridReact
                 animateRows
                 onGridReady={onGridReady}
@@ -41,7 +48,11 @@ export default function CountriesTable(){
                 }}>
                 <AgGridColumn field="Country"/>
                 <AgGridColumn field="NewConfirmed"/>
+                <AgGridColumn field="NewDeaths"/>
+                <AgGridColumn field="NewRecovered"/>
                 <AgGridColumn field="TotalConfirmed"/>
+                <AgGridColumn field="TotalDeaths"/>
+                <AgGridColumn field="TotalRecovered"/>
             </AgGridReact>
         </div>
     );

@@ -2,6 +2,7 @@
 import {useCallback, useEffect, useState} from "react";
 import {useFetchForCountry} from "../hooks/useFetchForCountry";
 import Chart from "../Components/Chart";
+import NavBar from "../Components/NavBar";
 
 export default function CountryPage({countryCode}){
     const [loading, setLoading] = useState(false)
@@ -38,10 +39,22 @@ export default function CountryPage({countryCode}){
 
     useEffect(() => { load() }, [])
 
-    return(
+    return(<>
+        <NavBar />
+    <header className="header" />
+        {dataSummary && <div className="container-fluid">
+            <div className="row d-flex justify-content-center align-items-center">
+                <img src={`http://www.geognos.com/api/en/countries/flag/${dataSummary.CountryCode}.png`} className="countrybox" />
+            </div>
+            <div className="row  d-flex justify-content-center">
+                <h1 className="text-primary text-center">{dataSummary.Country}</h1>
+            </div>
+    </div> }
         <div className="container mt-3">
-            <h1>{dataSummary && dataSummary.Country}</h1>
-            <Chart data={items}/>
+
+            <h1>Total Cases</h1>
+            {loading? <h1>Chargement</h1> : <Chart data={items}/> }
         </div>
+    </>
     )
 }

@@ -8,3 +8,14 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.header{
+    height: 40vh;
+    width: 100%;
+    background: url("https://firebasestorage.googleapis.com/v0/b/covid-statistics-3fcc4.appspot.com/o/coronavirus.jpg?alt=media") center;
+    background-size: cover;
+}
+.countrybox{
+
+    transform: translateY(-50px);
+}
