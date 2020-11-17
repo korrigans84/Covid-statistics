@@ -20,22 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc422da9-8bc3-4710-bb2b-a274a0ef8fea" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Components/CountriesTable.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/SignIn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/SignIn.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Auth/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/SignUp.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NavBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Profile/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Profile/ProfilePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/firebase.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/CountryPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CountryPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Profile.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/providers/UserProvider.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/providers/UserProvider.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +80,7 @@
       <workItem from="1605199874496" duration="5000" />
       <workItem from="1605199903938" duration="1007000" />
       <workItem from="1605285253258" duration="3913000" />
+      <workItem from="1605625868518" duration="2687000" />
     </task>
     <servers />
   </component>
