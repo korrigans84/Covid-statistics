@@ -20,7 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc422da9-8bc3-4710-bb2b-a274a0ef8fea" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NavBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/CountriesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CountriesPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +52,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Vuepress/firstapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Symfony/SAP" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
@@ -77,6 +80,9 @@
       <workItem from="1605199903938" duration="1007000" />
       <workItem from="1605285253258" duration="3913000" />
       <workItem from="1605625868518" duration="7255000" />
+      <workItem from="1605719758389" duration="1885000" />
+      <workItem from="1610126054569" duration="110000" />
+      <workItem from="1610126284979" duration="910000" />
     </task>
     <servers />
   </component>
@@ -94,27 +100,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="772" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1605633426917">
-      <screen x="58" y="27" width="1862" height="1053" />
-    </state>
-    <state x="772" y="311" width="424" height="491" key="FileChooserDialogImpl/58.27.1862.1053@58.27.1862.1053" timestamp="1605633426917" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1605085071111">
-      <screen x="58" y="27" width="1862" height="1053" />
-    </state>
-    <state width="498" height="446" key="SwitcherDM/58.27.1862.1053@58.27.1862.1053" timestamp="1605085071111" />
-    <state x="768" y="466" width="441" height="181" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605091014457">
-      <screen x="58" y="27" width="1862" height="1053" />
-    </state>
-    <state x="768" y="466" width="441" height="181" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/58.27.1862.1053@58.27.1862.1053" timestamp="1605091014457" />
-    <state x="653" y="252" key="run.anything.popup" timestamp="1605285837297">
-      <screen x="58" y="27" width="1862" height="1053" />
-    </state>
-    <state x="653" y="252" key="run.anything.popup/58.27.1862.1053@58.27.1862.1053" timestamp="1605285837297" />
-    <state x="652" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1605288337249">
-      <screen x="58" y="27" width="1862" height="1053" />
-    </state>
-    <state x="652" y="259" width="672" height="678" key="search.everywhere.popup/58.27.1862.1053@58.27.1862.1053" timestamp="1605288337249" />
   </component>
 </project>
