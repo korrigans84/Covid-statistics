@@ -2,10 +2,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -17,12 +14,12 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build
-        run: CI=false npm run build
+        run: npm run build
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
           name: dist
-          path: build
+          path: dist
   deploy:
     name: Deploy
     needs: build
@@ -34,7 +31,7 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: dist
-          path: build
+          path: dist
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
