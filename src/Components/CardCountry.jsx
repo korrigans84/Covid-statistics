@@ -1,8 +1,9 @@
 import {Button, Flag, Icon} from "semantic-ui-react";
-import {navigate} from "@reach/router";
+import {useHistory} from "react-router-dom";
 
 
 export default function CardCountry({key, country}){
+    const navigate = useHistory()
     console.log(country)
     var countryCode = (country.CountryCode).toLowerCase()
     return(
@@ -25,7 +26,7 @@ export default function CardCountry({key, country}){
                     </div>
                 </div>
                 <div className="col-md-12">
-                    <Button onClick={() => navigate(`/country/${countryCode}`)} color='teal'>See More</Button>
+                    <Button onClick={() => navigate.push(`/country/${countryCode}`)} color='teal'>See More</Button>
                 </div>
             </div>
         </div>

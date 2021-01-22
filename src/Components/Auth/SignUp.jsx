@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {Link, redirectTo} from "@reach/router";
 import {auth, generateUserDocument, signInWithGoogle} from "../../firebase";
 import NavBar from "../NavBar";
 
@@ -8,6 +7,7 @@ export default function SignUp(){
     const [password, setPassword] = useState("");
     const [displayName, setDisplayName] = useState("");
     const [error, setError] = useState(null);
+
     const createUserWithEmailAndPasswordHandler = async (e, email, password) => {
         e.preventDefault();
         console.log('ok')
@@ -18,7 +18,7 @@ export default function SignUp(){
         catch(error){
             setError('Error Signing up with email and password');
         }
-        redirectTo('/profile');
+        //redirectTo('/profile');
 
     };
 

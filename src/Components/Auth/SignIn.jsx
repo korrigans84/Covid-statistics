@@ -1,14 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react'
-import {Link, useNavigate} from "@reach/router";
 import {auth, signInWithGoogle} from "../../firebase";
 import {UserContext} from "../../providers/UserProvider";
 import {Form, Icon, Divider, Button, Container} from "semantic-ui-react";
-import NavBar from "../NavBar";
+import {useHistory} from "react-router-dom";
 
 
 
 export default function SignIn(){
-    const navigate = useNavigate();
+    const navigate = useHistory();
     const user = useContext(UserContext);
     //hooks useState
     const [email, setEmail] = useState('');
@@ -17,7 +16,7 @@ export default function SignIn(){
 
     useEffect(function () {
         if(user !== undefined){
-            navigate('/profile')
+            navigate.push('/profile')
         }
     },[user, navigate])
     //prevent submit
@@ -45,7 +44,6 @@ export default function SignIn(){
 
     return (
         <>
-        <NavBar />
         <Container text textAlign='center' className="mt-5">
             <Form>
                 <Form.Field>

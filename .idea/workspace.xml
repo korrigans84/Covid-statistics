@@ -20,13 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc422da9-8bc3-4710-bb2b-a274a0ef8fea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/SignIn.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/SignIn.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Auth/SignUp.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Auth/SignUp.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/CardCountry.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CardCountry.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/CountriesTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/CountriesTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NavBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Profile/ProfilePage.jsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/CountryPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CountryPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/HomePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/HomePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ProfilePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ProfilePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +103,7 @@
       <workItem from="1610784108645" duration="21000" />
       <workItem from="1610821724842" duration="652000" />
       <workItem from="1610965114370" duration="2674000" />
-      <workItem from="1611320519308" duration="1376000" />
+      <workItem from="1611320519308" duration="3283000" />
     </task>
     <servers />
   </component>

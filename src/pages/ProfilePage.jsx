@@ -1,22 +1,19 @@
-import {Router, useNavigate} from '@reach/router'
-import ProfilePage from "../Components/Profile/ProfilePage";
-import UserProvider, {UserContext} from "../providers/UserProvider";
+import {UserContext} from "../providers/UserProvider";
 import React, {useContext, useEffect} from "react";
-import SignIn from "../Components/Auth/SignIn";
+import {signOut} from "../firebase";
 
 export default function ProfilePage() {
-    const navigate = useNavigate();
     const user = useContext(UserContext);
 
     useEffect(() => {
-        console.log(user)
-        if(!user){
-            navigate("/signin");
-        }
+
     }, [user])
 
     const { displayName, email} = user;
     return (
-        <ProfilePage />
+        <div>
+            <h1>This is the profile page</h1>
+            <button className = "btn btn-danger" onClick = {() => {signOut()}}>Sign out</button>
+        </div>
     );
 }
