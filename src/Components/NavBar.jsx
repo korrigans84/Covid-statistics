@@ -1,12 +1,12 @@
 import React, {useContext} from 'react'
 import {UserContext} from "../providers/UserProvider";
 import {signOut} from "../firebase";
-import {useNavigate} from "@reach/router";
+import {useHistory} from "react-router-dom";
 
 export default function NavBar()
 {
     const user = useContext(UserContext);
-    const navigate = useNavigate()
+    const navigate = useHistory
     const handleClick = function (e) {
         navigate('/signin')
     }

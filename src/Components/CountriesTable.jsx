@@ -5,10 +5,10 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import React, {useEffect, useState} from "react";
 import { AgGridColumn, AgGridReact} from "ag-grid-react";
 import {Flag} from "semantic-ui-react";
-import {useNavigate} from "@reach/router";
+import {useHistory} from "react-router-dom";
 
 export default function CountriesTable(){
-    const navigate = useNavigate();
+    const navigate = useHistory();
     const [gridApi, setGridApi] = useState(null);
     const [gridColumnApi, setGridColumnApi] = useState(null);
 
