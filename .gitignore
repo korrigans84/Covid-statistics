@@ -34,4 +34,5 @@ yarn-error.log*
 # idea files
 .idea
 VHl1opZSvcemP9DjksyZmVwuAEH3
+.eslintcache
 
