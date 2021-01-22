@@ -1,22 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/styles';
-import App from './pages/App';
-import { Router, Link } from '@reach/router';
-import reportWebVitals from './reportWebVitals';
-import ProfilePage from "./Components/Profile/ProfilePage";
-import SignIn from "./Components/Auth/SignIn";
-import SignUp from "./Components/Auth/SignUp";
-import NavBar from "./Components/NavBar";
-import CountryPage from "./pages/CountryPage";
-import CountriesPage from "./pages/CountriesPage";
-import UserProvider from "./providers/UserProvider";
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-      <UserProvider>
-
-      </UserProvider>
+      <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -3,8 +3,10 @@ import {useCallback, useEffect, useState} from "react";
 import {useFetchForCountry} from "../hooks/useFetchForCountry";
 import Chart from "../Components/Chart";
 import NavBar from "../Components/NavBar";
+import {useParams} from "react-router";
 
-export default function CountryPage({countryCode}){
+export default function CountryPage(){
+    const countryCode = useParams()
     const [loading, setLoading] = useState(false)
     const [items, setItems] = useState([])
     const [dataSummary, setDataSummary] = useState(null)
