@@ -8,8 +8,6 @@ export default function ProfilePage() {
     useEffect(() => {
 
     }, [user])
-
-    const { displayName, email} = user;
     return (
         <div>
             <h1>This is the profile page</h1>

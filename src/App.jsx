@@ -1,5 +1,5 @@
-import {useContext} from 'react'
-import UserProvider, {UserContext} from "./providers/UserProvider";
+import {useContext, useEffect} from 'react'
+import {UserContext} from "./providers/UserProvider";
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CountriesPage from "./pages/CountriesPage";
@@ -11,7 +11,10 @@ import {Header} from "semantic-ui-react";
 
 
 export default function App () {
-    const { user } = useContext(UserContext)
+    const {user} = useContext(UserContext)
+    useEffect(() => {
+        console.log(user)
+    })
     return (
 
             <Router>

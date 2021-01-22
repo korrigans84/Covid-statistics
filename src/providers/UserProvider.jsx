@@ -1,11 +1,21 @@
 import React, { Component, createContext } from "react";
 import {auth, generateUserDocument} from "../firebase";
 
-export const UserContext = createContext({ user: null });
+export const UserContext = createContext({
+    user: null,
+    logout: () => {}
+});
 export default class UserProvider extends Component {
-    state = {
-        user: null
-    };
+    constructor(props) {
+        super(props);
+        this.logout = () => {
+
+        }
+        this.state= {
+            user: null,
+            logout: this.logout
+        };
+    }
 
     componentDidMount = async () => {
         auth.onAuthStateChanged(async userAuth => {
@@ -22,7 +32,7 @@ export default class UserProvider extends Component {
     };
     render() {
         return (
-            <UserContext.Provider value={this.state.user}>
+            <UserContext.Provider value={this.state}>
                 {this.props.children}
             </UserContext.Provider>
         );

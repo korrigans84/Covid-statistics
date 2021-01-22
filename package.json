@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-firebase/auth": "^0.2.10",
+    "@react-firebase/firestore": "^0.5.5",
     "ag-grid-community": "^24.1.0",
     "ag-grid-react": "^24.1.1",
     "bootstrap": "^4.6.0",
