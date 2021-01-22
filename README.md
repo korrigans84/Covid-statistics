@@ -7,8 +7,9 @@ This website wad created for a student project of EURECOM.
 
 ## What technology is used?
 
-I use React for the frontend part, and ExpressJS for the Backend part. 
-I also use Firebase for the noSQL Database, Auth system, and the Storage.
+I use React as a client framework, and use different services from firebase to authenticate te users, store data and get data. 
+I setup a CI using github workflow, to build and deploy the code for every merge to main branch. \\
+For the future, I'll create a test step, to confirm the merge request from a release only if the tests are passed.
 
 ## About the API 
 For the data, I use this [API](https://documenter.getpostman.com/view/10808728/SzS8rjbc#00030720-fae3-4c72-8aea-ad01ba17adf8), which provide many global data, and by countries.
