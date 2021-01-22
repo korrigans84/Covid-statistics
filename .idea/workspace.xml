@@ -22,8 +22,6 @@
     <list default="true" id="bc422da9-8bc3-4710-bb2b-a274a0ef8fea" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/NavBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/CountriesPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CountriesPage.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +50,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Symfony/SAP" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
@@ -82,7 +80,11 @@
       <workItem from="1605625868518" duration="7255000" />
       <workItem from="1605719758389" duration="1885000" />
       <workItem from="1610126054569" duration="110000" />
-      <workItem from="1610126284979" duration="910000" />
+      <workItem from="1610126284979" duration="1682000" />
+      <workItem from="1610784051695" duration="20000" />
+      <workItem from="1610784108645" duration="21000" />
+      <workItem from="1610821724842" duration="652000" />
+      <workItem from="1610965114370" duration="2674000" />
     </task>
     <servers />
   </component>

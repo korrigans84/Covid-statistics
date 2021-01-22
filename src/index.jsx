@@ -15,21 +15,18 @@ import UserProvider from "./providers/UserProvider";
 ReactDOM.render(
   <React.StrictMode>
       <UserProvider>
-      <Router>
 
-          <App path="/" />
-          <CountriesPage path="countries" />
-          <CountryPage path="country/:countryCode" />
-          <ProfilePage path="profile" />
-          <SignIn path="signin" />
-          <SignUp path="signup" />
-      </Router>
       </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+/*<Router>
+         <App path="/" />
+         <CountriesPage path="countries" />
+         <CountryPage path="country/:countryCode" />
+         <ProfilePage path="profile" />
+         <SignIn path="signin" />
+         <SignUp path="signup" />
+     </Router>*/

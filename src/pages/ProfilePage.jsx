@@ -4,7 +4,7 @@ import UserProvider, {UserContext} from "../providers/UserProvider";
 import React, {useContext, useEffect} from "react";
 import SignIn from "../Components/Auth/SignIn";
 
-export default function Profile() {
+export default function ProfilePage() {
     const navigate = useNavigate();
     const user = useContext(UserContext);
 
