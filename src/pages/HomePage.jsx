@@ -7,7 +7,7 @@ import {Cell, Pie, PieChart} from "recharts";
 
 export default function HomePage(){
     const [options, setOptions] = useState()
-    const {load, summary, loading} = useSummary()
+    const {load, summary, loading, day} = useSummary()
     const COLORS = ['#e74c3c', '#34495e', '#16a085'];
 
     const RADIAN = Math.PI / 180;
@@ -42,7 +42,7 @@ export default function HomePage(){
         <>
             <Header />
             <div className="dontainer d-flex justify-content-center">
-                {loading ? <h1>Loading</h1> : <h1>New cases</h1> }
+                {loading ? <h1>Loading</h1> : <h1>Summary for today ( { day && day.toDateString()}) </h1> }
                 {options &&
                 <PieChart width={400} height={400}>
                     <Pie dataKey="value" startAngle={360} endAngle={0} data={options} cx={200} cy={200}  outerRadius={80} fill="#ffffff" label={({index})=> {return options[index].name}} >

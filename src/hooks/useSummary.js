@@ -6,7 +6,7 @@ export function  useSummary(countryCode=''){
     const [loading, setLoading] = useState(false)
     const [summary, setSummary] = useState([])
     const [newCases, setNewCases] = useState(0)
-
+    const [day, setDay] = useState(null)
     const load = useCallback(async () =>{
         setLoading((true))
         const response = await fetch( API_URL+"summary", {
@@ -16,6 +16,8 @@ export function  useSummary(countryCode=''){
         })
         const responseData = await response.json()
         if(response.ok){
+            setDay(new Date(responseData.Date))
+            console.log(responseData)
             if(countryCode !== ''){
                 setSummary(responseData.Countries.filter(function(item){return (item.CountryCode===countryCode.toUpperCase());})[0])
             }
@@ -30,7 +32,8 @@ export function  useSummary(countryCode=''){
         summary,
         load,
         loading,
-        newCases
+        newCases,
+        day
     }
 
 
