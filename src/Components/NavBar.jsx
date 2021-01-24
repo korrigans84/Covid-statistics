@@ -26,14 +26,18 @@ export default function NavBar()
                         <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
                     </li>
                     <li className="nav-item mr-auto">
-                        <Link className="nav-link" to="/login">Login</Link>
+                        <Link className="nav-link" to="/profile">Countries</Link>
+                    </li>
+
+                    <li className="nav-item mr-auto">
+                        <Link className="nav-link" to="/posts">Forum</Link>
                     </li>
 
                     <li className="nav-item ui right aligned">
                         { user ? <><button className="btn btn-outline-danger" onClick={() => { logout() }}>Logout</button>
                                 <Link className="btn btn-outline-secondary" to="/profile">Profile</Link>
                         </>:
-                            <Link className="btn btn-outline-success" to="/login">SignIn</Link>
+                            <Link className="btn btn-outline-success" to="/login">Login</Link>
                         }
                     </li>
                 </ul>
