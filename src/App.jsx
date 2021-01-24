@@ -1,6 +1,6 @@
 import {useContext, useEffect} from 'react'
 import {UserContext} from "./providers/UserProvider";
-import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Redirect, useHistory} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CountriesPage from "./pages/CountriesPage";
 import CountryPage from "./pages/CountryPage";
@@ -9,18 +9,15 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import {Header} from "semantic-ui-react";
 import NavBar from "./Components/NavBar";
+import Logout from "./Components/Auth/Logout";
 
 
 export default function App () {
     const {user} = useContext(UserContext)
-    useEffect(() => {
-        console.log(user)
-    })
     return (
 
-            <Router>
+            <>
                 <NavBar />
-                <Header />
             <Switch>
                 <Route path="/country/:countryCode">
                     <CountryPage/>
@@ -31,8 +28,11 @@ export default function App () {
                 <Route path="/profile">
                     { !user ? <Redirect to="/signin" />: <ProfilePage />}
                 </Route>
-                <Route path="/signin">
+                <Route path="/login">
                     {user ? <Redirect to="/profile" /> : <LoginPage />}
+                </Route>
+                <Route path="/logout">
+                    {!user ? <Redirect to="/" /> : <Logout /> }
                 </Route>
                 <Route path="/register">
                     {user ? <Redirect to="/profile" /> : <RegisterPage />}
@@ -41,6 +41,6 @@ export default function App () {
                     <HomePage />
                 </Route>
             </Switch>
-            </Router>
+            </>
     )
 }

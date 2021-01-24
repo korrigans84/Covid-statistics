@@ -1,7 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-
 const  firebaseConfig = {
     apiKey: "AIzaSyCt45-LYrtRlYv9jtNc4-XpJcOMSL0Z-ls",
     authDomain: "covid-statistics-3fcc4.firebaseapp.com",
@@ -24,7 +23,7 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 export const signOut = () =>{
     auth.signOut()
-        .then(() => console.log('signed out') );
+        .then(() => {return true } );
 }
 export const signInWithGoogle = () => {
     auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
@@ -41,19 +40,25 @@ export const signInWithGoogle = () => {
 
 };
 
-//create User table
+/**
+ * Create user doc if it not already exist, else, we just get user document
+ * @param user
+ * @param additionalData
+ * @returns {Promise<null|{[p: string]: any, uid: *}|undefined>}
+ */
 export const generateUserDocument = async (user, additionalData) => {
 
     if (!user) return;
     const userRef = firestore.doc(`users/${user.uid}`);
     const snapshot = await userRef.get();
     if (!snapshot.exists) {
-        const { email, displayName, photoURL } = user;
+        const { email, displayName, photoURL, isAdmin } = user;
         try {
             await userRef.set({
                 displayName,
                 email,
                 photoURL,
+                isAdmin,
                 ...additionalData
             });
         } catch (error) {
@@ -74,3 +79,60 @@ const getUserDocument = async uid => {
         console.error("Error fetching user", error);
     }
 };
+
+export const getAllUsersDocument = async () => {
+    try {
+        const snapshot = await firestore.collection(`users`).get();
+        if(snapshot.exists){
+            return snapshot.docs
+        }
+        return null
+    } catch (error) {
+        console.error("Error fetching user", error);
+    }
+}
+
+export const generatePostDocument = async (post, additionalData) => {
+
+    if (!post) return;
+    const postRef = firestore.doc(`posts/${post.uid}`);
+    const snapshot = await postRef.get();
+    if (!snapshot.exists) {
+        try {
+            await postRef.set({
+                post,
+                ...additionalData
+            });
+        } catch (error) {
+            console.error("Error creating user document", error);
+        }
+    }
+    return getPostDocument(post.uid);
+};
+const getPostDocument = async uid => {
+    if (!uid) return null;
+    try {
+        const postDocument = await firestore.doc(`posts/${uid}`).get();
+        return {
+            uid,
+            ...postDocument.data()
+        };
+    } catch (error) {
+        console.error("Error fetching user", error);
+    }
+};
+
+export const getPostsDocumentsByCountry = async countryCode => {
+    const ref =  firestore.collection('posts').where(new firebase.firestore.FieldPath('post', 'country'), '==', countryCode)
+    const snapshot = await ref.get()
+    const posts = snapshot.docs.map(post => {
+        return post.data()["post"]
+    })
+    return posts;
+}
+
+
+export const getPostsDocumentsByUser = async uid => {
+    const snapshot = await firestore.collection('post').where("user/uid", "==", uid ).get()
+    return snapshot.exists ? snapshot.docs : null
+}

@@ -1,5 +1,8 @@
 @import "~bootstrap";
-
+body{
+    box-sizing: border-box !important;
+    color: white;
+}
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -32,4 +35,11 @@ body{
     background-color: #072943;
     filter: brightness(150%);
 
+}
+
+#form-post .form-control{
+    border: 1px solid #072943;
+}
+.recharts-tooltip-label{
+    color: black!important;
 }
