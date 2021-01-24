@@ -30,7 +30,7 @@ export default function CountriesTable(){
     }
 
     function handleClickRow(e){
-        navigate(`/country/${e.data.CountryCode}`)
+        navigate.push(`/country/${e.data.CountryCode}`)
         }
     return (
         <div className="ag-theme-alpine"  style={ { height: 1000, width: "100%" } }>

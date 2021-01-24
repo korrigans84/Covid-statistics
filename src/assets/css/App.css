@@ -19,3 +19,17 @@ body {
 
     transform: translateY(-50px);
 }
+
+.bg-main{
+    background-color: #072943;
+}
+
+.bg-main-light{
+    background-color: #072943;
+}
+
+body{
+    background-color: #072943;
+    filter: brightness(150%);
+
+}

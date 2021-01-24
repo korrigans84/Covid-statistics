@@ -6,7 +6,7 @@ import NavBar from "../Components/NavBar";
 import {useParams} from "react-router";
 
 export default function CountryPage(){
-    const countryCode = useParams()
+    const { countryCode } = useParams()
     const [loading, setLoading] = useState(false)
     const [items, setItems] = useState([])
     const [dataSummary, setDataSummary] = useState(null)
@@ -42,9 +42,7 @@ export default function CountryPage(){
     useEffect(() => { load() }, [])
 
     return(<>
-        <NavBar />
-    <header className="header" />
-        {dataSummary && <div className="container-fluid">
+            {dataSummary && <div className="container-fluid">
             <div className="row d-flex justify-content-center align-items-center">
                 <img src={`http://www.geognos.com/api/en/countries/flag/${dataSummary.CountryCode}.png`} className="countrybox" />
             </div>

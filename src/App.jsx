@@ -8,6 +8,7 @@ import ProfilePage from "./pages/ProfilePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import {Header} from "semantic-ui-react";
+import NavBar from "./Components/NavBar";
 
 
 export default function App () {
@@ -18,16 +19,14 @@ export default function App () {
     return (
 
             <Router>
-            <Header />
+                <NavBar />
+                <Header />
             <Switch>
-                <Route path="/">
-                    <HomePage />
+                <Route path="/country/:countryCode">
+                    <CountryPage/>
                 </Route>
                 <Route path="/countries" >
                     <CountriesPage />
-                </Route>
-                <Route path="/country/:countryCode">
-                    <CountryPage/>
                 </Route>
                 <Route path="/profile">
                     { !user ? <Redirect to="/signin" />: <ProfilePage />}
@@ -35,8 +34,11 @@ export default function App () {
                 <Route path="/signin">
                     {user ? <Redirect to="/profile" /> : <LoginPage />}
                 </Route>
-                <Route path="/signin">
+                <Route path="/register">
                     {user ? <Redirect to="/profile" /> : <RegisterPage />}
+                </Route>
+                <Route path="/">
+                    <HomePage />
                 </Route>
             </Switch>
             </Router>
