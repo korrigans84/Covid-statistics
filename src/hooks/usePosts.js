@@ -35,9 +35,7 @@ export function usePosts(){
         },
         fetchPostsByUser: function (uid) {
             dispatch({type: 'GET_POST_BY_USER', payload: getPostsDocumentsByUser(uid)})
-
         }
 
     }
 }
-

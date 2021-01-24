@@ -1,6 +1,7 @@
 @import "~bootstrap";
 body{
     box-sizing: border-box !important;
+    color: white;
 }
 body {
     margin: 0;

@@ -1,7 +1,7 @@
 import {UserContext} from "../providers/UserProvider";
 import React, {useContext, useEffect, useState} from "react";
 import {signOut} from "../firebase";
-import {Card, CardContent, Container, Header} from "semantic-ui-react";
+import {Container, Header} from "semantic-ui-react";
 import PostType from "../Components/form/PostType";
 import {usePosts} from "../hooks/usePosts";
 import uuid from 'react-uuid'
@@ -13,8 +13,11 @@ export default function ProfilePage() {
     const handlePostSubmit = (data) => {
             data= {
                 uid: uuid(),
-                user: user,
-                ...data
+                user_uid: user.uid,
+                country: data.country.value,
+                post_content: data.post_content,
+                title: data.title,
+                createdAt: (new Date()).toString()
             }
             user.isAdmin && addPost(data)
             console.log(data)
