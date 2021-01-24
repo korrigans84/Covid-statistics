@@ -80,3 +80,42 @@ const getUserDocument = async uid => {
         console.error("Error fetching user", error);
     }
 };
+
+
+export const generatePostDocument = async (post, additionalData) => {
+
+    if (!post) return;
+    const postRef = firestore.doc(`posts/${post.uid}`);
+    const snapshot = await postRef.get();
+    if (!snapshot.exists) {
+        try {
+            await postRef.set({
+                post,
+                ...additionalData
+            });
+        } catch (error) {
+            console.error("Error creating user document", error);
+        }
+    }
+    return getPostDocument(post.uid);
+};
+const getPostDocument = async uid => {
+    if (!uid) return null;
+    try {
+        const postDocument = await firestore.doc(`posts/${uid}`).get();
+        return {
+            uid,
+            ...postDocument.data()
+        };
+    } catch (error) {
+        console.error("Error fetching user", error);
+    }
+};
+
+export const getPostsDocumentsByCountry = async countryCode => {
+
+}
+
+export const getPostsDocumentsByUser = async uid => {
+
+}
