@@ -1,6 +1,5 @@
 import {useReducer} from "react";
-import {addPost, getPosts} from "../dataManager";
-import {getPostsDocumentsByCountry, getPostsDocumentsByUser} from "../firebase";
+import {generatePostDocument, getPostsDocumentsByCountry, getPostsDocumentsByUser} from "../firebase";
 
 
 function reducer(state, action){
@@ -25,13 +24,13 @@ export function usePosts(){
     return{
         posts: state.posts,
         fetchPosts: function () {
-            dispatch({type: 'SET_POST', payload: getPosts()})
+            dispatch({type: 'SET_POST', payload: () => {}})
         },
         fetchPostsByCountry: function (countryCode) {
             dispatch({type: 'GET_POST_BY_COUNTRY', payload: getPostsDocumentsByCountry(countryCode)})
         },
         addPost: function (post) {
-            addPost(post)
+            generatePostDocument(post)
             dispatch({type: 'ADD_POST', payload: post})
         },
         fetchPostsByUser: function (uid) {
