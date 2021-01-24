@@ -10,9 +10,8 @@ export const UserContext = createContext({
 export default class UserProvider extends Component {
     constructor(props) {
         super(props);
-        this.logout = () => {
-            signOut()
-            this.props.history.push("/")
+        this.logout = async () => {
+            await signOut()
         }
         this.loginWithGoogle = () => {
             const user = signInWithGoogle()
@@ -42,11 +41,10 @@ export default class UserProvider extends Component {
                 if(userAuth.email === 'julien.thomas84@gmail.com'){
                     userAuth.isAdmin=true
                 }
-                console.log(userAuth)
                 const user = await generateUserDocument(userAuth);
-                console.log(user)
                 this.setState({ user });
             }
+            console.log(this.state.user)
         });
     };
     render() {

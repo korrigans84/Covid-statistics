@@ -24,7 +24,7 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 export const signOut = () =>{
     auth.signOut()
-        .then(() => console.log('signed out') );
+        .then(() => {return true } );
 }
 export const signInWithGoogle = () => {
     auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)

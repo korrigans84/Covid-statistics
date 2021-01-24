@@ -13,12 +13,7 @@ import Logout from "./Components/Auth/Logout";
 
 
 export default function App () {
-    const {user, logout } = useContext(UserContext)
-    const withoutHeader = ['/login', '/register', '/logout']
-    const history = useHistory()
-    useEffect(() => {
-        console.log(history.location.pathname)
-    }, [history])
+    const {user} = useContext(UserContext)
     return (
 
             <>
