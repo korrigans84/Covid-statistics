@@ -40,3 +40,6 @@ body{
 #form-post .form-control{
     border: 1px solid #072943;
 }
+.recharts-tooltip-label{
+    color: black!important;
+}

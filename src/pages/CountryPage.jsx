@@ -32,7 +32,9 @@ export default function CountryPage(){
                 }else{
                     return -1
                 }
-            }))
+            })
+               // .filter(item =>  item.Cases > 0))
+            )
             console.log(graphData)
         }
     },[items])

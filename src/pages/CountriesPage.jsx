@@ -1,17 +1,15 @@
 import NavBar from "../Components/NavBar";
 import CountriesTable from "../Components/CountriesTable";
 import React from "react";
+import {Header} from "semantic-ui-react";
 
 
 export default function CountriesPage()
 {
 
     return( <>
-    <NavBar />
-    <header className="header">
-
-    </header>
-    <h1 className="text-primary">Covid - statistics
+    <Header />
+    <h1 className="text-primary text-center my-3">Covid - statistics
     </h1>
 
     <div className="container-fluid">

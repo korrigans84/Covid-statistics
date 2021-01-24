@@ -17,7 +17,6 @@ export function  useSummary(countryCode=''){
         const responseData = await response.json()
         if(response.ok){
             setDay(new Date(responseData.Date))
-            console.log(responseData)
             if(countryCode !== ''){
                 setSummary(responseData.Countries.filter(function(item){return (item.CountryCode===countryCode.toUpperCase());})[0])
             }
