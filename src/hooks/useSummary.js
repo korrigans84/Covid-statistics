@@ -5,7 +5,8 @@ import {API_URL, useApi} from "./useApi";
 export function  useSummary(countryCode=''){
     const [loading, setLoading] = useState(false)
     const [summary, setSummary] = useState([])
-    const [count, setCount] = useState(0)
+    const [newCases, setNewCases] = useState(0)
+
     const load = useCallback(async () =>{
         setLoading((true))
         const response = await fetch( API_URL+"summary", {
@@ -21,6 +22,7 @@ export function  useSummary(countryCode=''){
             else{
                 setSummary(responseData.Global)
             }
+            setNewCases(responseData.Global.NewConfirmed + responseData.Global.NewDeaths + responseData.Global.NewRecovered )
         }
         setLoading(false)
     }, [])
@@ -28,7 +30,7 @@ export function  useSummary(countryCode=''){
         summary,
         load,
         loading,
-        count,
+        newCases
     }
 
 

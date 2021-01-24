@@ -26,7 +26,7 @@ export default function NavBar()
                         <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
                     </li>
                     <li className="nav-item mr-auto">
-                        <Link className="nav-link" to="/profile">Countries</Link>
+                        <Link className="nav-link" to="/countries">Countries</Link>
                     </li>
 
                     <li className="nav-item mr-auto">
