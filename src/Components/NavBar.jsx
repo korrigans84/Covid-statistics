@@ -10,6 +10,7 @@ export default function NavBar()
     const handleClick = function (e) {
         navigate.push('/signin')
     }
+
     return(
         <nav className="navbar navbar-expand-lg navbar-dark bg-main">
             <Link to="/" >Covid-Statistics</Link>

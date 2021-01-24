@@ -44,45 +44,7 @@ export default function SignIn(){
 
     return (
         <>
-        <Container text textAlign='center' className="mt-5">
-            <Form>
-                <Form.Field>
-                    <label className="text-left ml-2" htmlFor="userEmail">Email :</label>
-                    <input placeholder='Your Email' value={email} type="email" id="userEmail"
-                           onChange={(e) => onChangeHandler(e)}/>
-                </Form.Field>
-                <Form.Field>
-                    <label className="text-left ml-2" htmlFor="userPassword">Password</label>
-                    <input type="password"
-                           name="userPassword"
-                           value={password}
-                           placeholder="Your Password"
-                           id="userPassword"
-                           onChange={(e) => onChangeHandler(e)}/>
-                </Form.Field>
-                <Button type='submit' className="text-right" onClick={(e) => {
-                    signInWithEmailAndPasswordHandler(e, email, password)
-                }}>Login</Button>
-            </Form>
-            <Divider horizontal>Or</Divider>
 
-            <Button color='google plus' onClick={ async (e) => {
-                signInWithGoogle();
-            }}>
-                <Icon name='google plus'/>Sign in with Google
-            </Button>
-            <Divider horizontal>Or</Divider>
-            <p className="text-center my-3">
-                Don't have an account?{" "}
-                <Link to="/signup" className="text-blue-500 hover:text-blue-600">
-                    Sign up here
-                </Link>
-                <br/>
-                <Link to="passwordReset" className="text-blue-500 hover:text-blue-600">
-                    Forgot Password?
-                </Link>
-            </p>
-        </Container>
         </>
     );
 }

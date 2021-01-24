@@ -41,19 +41,25 @@ export const signInWithGoogle = () => {
 
 };
 
-//create User table
+/**
+ * Create user doc if it not already exist, else, we just get user document
+ * @param user
+ * @param additionalData
+ * @returns {Promise<null|{[p: string]: any, uid: *}|undefined>}
+ */
 export const generateUserDocument = async (user, additionalData) => {
 
     if (!user) return;
     const userRef = firestore.doc(`users/${user.uid}`);
     const snapshot = await userRef.get();
     if (!snapshot.exists) {
-        const { email, displayName, photoURL } = user;
+        const { email, displayName, photoURL, isAdmin } = user;
         try {
             await userRef.set({
                 displayName,
                 email,
                 photoURL,
+                isAdmin,
                 ...additionalData
             });
         } catch (error) {

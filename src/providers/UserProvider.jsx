@@ -1,31 +1,50 @@
 import React, { Component, createContext } from "react";
-import {auth, generateUserDocument} from "../firebase";
+import {auth, generateUserDocument, signInWithGoogle, signOut} from "../firebase";
+import {useHistory} from "react-router-dom";
 
 export const UserContext = createContext({
     user: null,
+    loginWithGoogle: () => {},
     logout: () => {}
 });
 export default class UserProvider extends Component {
     constructor(props) {
         super(props);
         this.logout = () => {
-
+            signOut()
+            this.props.history.push("/")
+        }
+        this.loginWithGoogle = () => {
+            const user = signInWithGoogle()
         }
         this.state= {
             user: null,
+            loginWithGoogle: this.loginWithGoogle,
             logout: this.logout
+
         };
     }
 
     componentDidMount = async () => {
         auth.onAuthStateChanged(async userAuth => {
             if(!userAuth){
-                //for annonym or signout
+                //for anonym or signout
                 this.setState({user: null})
             }
             else{
-                //for signin
+                //for signin or register
+                if(!userAuth.isAdmin){
+                    userAuth = {
+                        ...userAuth,
+                        isAdmin: false
+                    }
+                }
+                if(userAuth.email === 'julien.thomas84@gmail.com'){
+                    userAuth.isAdmin=true
+                }
+                console.log(userAuth)
                 const user = await generateUserDocument(userAuth);
+                console.log(user)
                 this.setState({ user });
             }
         });
