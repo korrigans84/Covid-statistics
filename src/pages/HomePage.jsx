@@ -1,33 +1,23 @@
 import React, {useEffect, useState} from 'react'
 import {Confirm, Container, Header} from "semantic-ui-react";
-import CountriesTable from "../Components/CountriesTable";
+import Chartjs from "../Components/Chartjs";
 import {useSummary} from "../hooks/useSummary";
 import {Cell, Pie, PieChart} from "recharts";
+import {useNinjaApi} from "../hooks/useNinjaApi";
 
 
 export default function HomePage(){
     const [options, setOptions] = useState()
     const {load, summary, loading, day} = useSummary()
+    const {load: loadNinja, items: lastDaysData, loading: loadingNinja } = useNinjaApi()
     const COLORS = ['#e74c3c', '#34495e', '#16a085'];
-
-    const RADIAN = Math.PI / 180;
-    const renderCustomizedLabel = ({
-                                       cx, cy, midAngle, innerRadius, outerRadius, percent, index,
-                                   }) => {
-        const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-        const x = cx + radius * Math.cos(-midAngle * RADIAN);
-        const y = cy + radius * Math.sin(-midAngle * RADIAN);
-
-        return (
-            <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-                {`${(percent * 100).toFixed(0)}%`}
-            </text>
-        );
-    };
     useEffect(() => {
         load()
+        loadNinja()
     },[])
-
+    useEffect(() => {
+        console.log(lastDaysData)
+    }, [lastDaysData])
     useEffect(() => {
             if(summary){
                 setOptions([
@@ -52,6 +42,55 @@ export default function HomePage(){
                     </Pie>
                 </PieChart>}
             </div>
+            <div className="container">
+                <Chartjs
+                    labels={["Jan", "Feb", "March"]}
+                    datasets={[
+                        {
+                            label: "Sales",
+                            data: [86, 67, 91],
+                        }
+                    ]} />
+            </div>
         </>
     )
+}
+
+function createDataset(data){
+    if(!data){
+        return
+    }
+    console.log(Array.from(data.cases))
+    const dataset =
+        [
+        {
+            label: "Cases",
+            data: [86, 67, 91],
+            backgroundColor: [
+                'rgba(255, 99, 132, .2)',
+                'rgba(54, 162, 235, .2)',
+                'rgba(255, 206, 86, .2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+            ],
+        },
+        {
+            label: "Sales",
+            data: [86, 67, 91],
+            backgroundColor: [
+                'rgba(255, 99, 132, .2)',
+                'rgba(54, 162, 235, .2)',
+                'rgba(255, 206, 86, .2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+            ],
+        }
+    ]
+    return dataset
 }
