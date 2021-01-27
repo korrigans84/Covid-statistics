@@ -44,7 +44,6 @@ export default class UserProvider extends Component {
                 const user = await generateUserDocument(userAuth);
                 this.setState({ user });
             }
-            console.log(this.state.user)
         });
     };
     render() {

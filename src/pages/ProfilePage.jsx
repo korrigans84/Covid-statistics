@@ -5,10 +5,11 @@ import {Container, Header} from "semantic-ui-react";
 import PostType from "../Components/form/PostType";
 import {usePosts} from "../hooks/usePosts";
 import uuid from 'react-uuid'
+import Post from "../Components/Post";
 export default function ProfilePage() {
 
     const {user} = useContext(UserContext);
-    const {addPost} = usePosts()
+    const {addPost, fetchPostsByUser, posts} = usePosts()
     const [error, setError] = useState(null)
     const handlePostSubmit = (data) => {
             data= {
@@ -22,23 +23,31 @@ export default function ProfilePage() {
             user.isAdmin && addPost(data)
             console.log(data)
     }
+    useEffect(() => {
+        fetchPostsByUser(user.uid)
+        console.log(posts)
+    }, [])
     return (
         <div>
         <Header />
         <Container >
             <div className="row">
-                <div className="col-12">
-                    <div className="card">
-                        <div className="card-body p-3">
-                            { user.isAdmin && <PostType onSubmit={handlePostSubmit} error={error} />}
-                        </div>
-                    </div>
-                </div>
+                <h2>Create a post :</h2>
             </div>
+            <div className="row d-flex justify-content-center">
+                { user.isAdmin && <PostType onSubmit={handlePostSubmit} error={error} />}
+            </div>
+        </Container>
 
+        <Container>
+            <div className="row">
+                <h2>Your recents posts</h2>
+            </div>
+            <div className="row">
+                {posts.map(post => <Post post={post} />)}
+            </div>
         </Container>
         <div>
-            <button className = "btn btn-danger" onClick = {() => {signOut()}}>Sign out</button>
         </div>
         </div>
     );

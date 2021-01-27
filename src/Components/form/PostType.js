@@ -15,7 +15,7 @@ export default function PostType ({onSubmit, error}) {
     const {register, handleSubmit, formState, errors, control } = useForm();
     const {isSubmitting} = formState
     return(
-            <form id="form-post" onSubmit={handleSubmit(onSubmit)}>
+            <form id="form-post" className="col-12 col-md-8 col-lg-6" onSubmit={handleSubmit(onSubmit)}>
                 {error && <div className="alert alert-danger">{error}</div>}
 
                 <div className="row">
