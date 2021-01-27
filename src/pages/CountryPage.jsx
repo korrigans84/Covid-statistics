@@ -12,7 +12,7 @@ import Post from "../Components/Post";
 import PostModal from "../Components/modal/postModal";
 import PostType from "../Components/form/PostType";
 import {UserContext} from "../providers/UserProvider";
-
+import date from 'date.js'
 export default function CountryPage(){
     const {user} = useContext(UserContext)
     const { countryCode } = useParams()
@@ -22,10 +22,11 @@ export default function CountryPage(){
      *          API managment
      *************************************/
     const { items, load, loading} = useApi(`total/dayone/country/${countryCode}/status/confirmed`, countryCode)
-    useEffect(() => {
+    const {items: sevenDaysData, load: load7days} = useApi(`total/country/${countryCode}/status/confirmed`, countryCode, true)
+    useEffect(async () => {
         loadSummary()
         load()
-        console.log(new Date('-7 days'))
+        await load7days()
     }, [])
     useEffect(() => {
         if(items !== []){
@@ -41,7 +42,6 @@ export default function CountryPage(){
             })
                // .filter(item =>  item.Cases > 0))
             )
-            console.log(graphData)
         }
     },[items])
 
@@ -53,10 +53,6 @@ export default function CountryPage(){
     useEffect(() => {
         load_posts()
     }, [])
-    useEffect(() => {
-        console.log(posts)
-    },[posts])
-
     return(<>
             <Header />
             {summary && <div className="container-fluid">

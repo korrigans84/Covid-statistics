@@ -26,10 +26,10 @@ export default function App () {
                     <CountriesPage />
                 </Route>
                 <Route path="/profile">
-                    { !user ? <Redirect to="/signin" />: <ProfilePage />}
+                    { !user ? <Redirect to="/login" />: <ProfilePage />}
                 </Route>
                 <Route path="/login">
-                    {user ? <Redirect to="/profile" /> : <LoginPage />}
+                    {<LoginPage />}
                 </Route>
                 <Route path="/logout">
                     {!user ? <Redirect to="/" /> : <Logout /> }

@@ -1,14 +1,21 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import {Button, Container, Divider, Form, Icon} from "semantic-ui-react";
 import {signInWithGoogle} from "../firebase";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {UserContext} from "../providers/UserProvider";
 
 export default function LoginPage(){
     const { user, loginWithGoogle } = useContext(UserContext)
+    const history = useHistory()
     const handleLoginWithGoogle = async () => {
-        loginWithGoogle()
+        await loginWithGoogle()
     }
+    useEffect(() => {
+        if(user){
+            history.goBack()
+            history.push('/')
+        }
+    }, [user])
     return(
         <Container text textAlign='center' className="mt-5">
 
