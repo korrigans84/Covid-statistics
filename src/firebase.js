@@ -123,14 +123,35 @@ const getPostDocument = async uid => {
 };
 
 export const getPostsDocumentsByCountry = async countryCode => {
-    const ref =  firestore.collection('posts').where(new firebase.firestore.FieldPath('post', 'country'), '==', countryCode)
+    const ref =  firestore.collection('posts').where('country', '==', countryCode)
     const snapshot = await ref.get()
     const posts = snapshot.docs.map(post => {
         return post.data()["post"]
     })
     return posts;
 }
+export const getDataByCountry = async countryCode => {
+    const ref =  firestore.collection('country').where(new firebase.firestore.FieldPath( 'country'), '==', countryCode)
+    const snapshot = await ref.get()
+    const data = snapshot.docs.map( _data => {
+        return _data.data()
+    })
+    console.log(data)
+    return data;
+}
+export const generateDataByCountry = async (country_code, data) => {
 
+    const postRef = firestore.doc(`country/${country_code.toUpperCase()}`);
+    const snapshot = await postRef.get();
+    if (!snapshot.exists) {
+        try {
+            await postRef.set(data);
+        } catch (error) {
+            console.error("Error creating user document", error);
+        }
+    }
+    return;
+};
 
 export const getPostsDocumentsByUser = async uid => {
     const snapshot = await firestore.collection('posts').where(new firebase.firestore.FieldPath('post', 'user_uid'), "==", uid ).get()

@@ -1,5 +1,5 @@
 
-import {useCallback, useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useFetchForCountry} from "../hooks/useFetchForCountry";
 import Chart from "../Components/Chart";
 import NavBar from "../Components/NavBar";
@@ -9,18 +9,23 @@ import {useApi} from "../hooks/useApi";
 import {useSummary} from "../hooks/useSummary";
 import {Header} from "semantic-ui-react";
 import Post from "../Components/Post";
+import PostModal from "../Components/modal/postModal";
+import PostType from "../Components/form/PostType";
+import {UserContext} from "../providers/UserProvider";
 
 export default function CountryPage(){
+    const {user} = useContext(UserContext)
     const { countryCode } = useParams()
     const [graphData, setGraphData] = useState(null)
     const { summary, load: loadSummary} = useSummary(countryCode)
     /*************************************
      *          API managment
      *************************************/
-    const { items, load, loading} = useApi(`total/dayone/country/${countryCode}/status/confirmed`)
+    const { items, load, loading} = useApi(`total/dayone/country/${countryCode}/status/confirmed`, countryCode)
     useEffect(() => {
         loadSummary()
         load()
+        console.log(new Date('-7 days'))
     }, [])
     useEffect(() => {
         if(items !== []){
@@ -44,39 +49,13 @@ export default function CountryPage(){
     /*************************************
      *          Posts managment
      *************************************/
-    const { load: load_posts, loading: loading_posts, items: posts } = usePosts(countryCode, null)
+    const { load: load_posts, loading: loading_posts, items: posts, addPost } = usePosts(countryCode, null)
     useEffect(() => {
         load_posts()
     }, [])
     useEffect(() => {
         console.log(posts)
     },[posts])
-    /*const load2 = useCallback(async () => {
-        const response = await fetch(`https://api.covid19api.com/`, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        const responseData = await response.json()
-        if (response.ok) {
-            responseData.map(dataElement => setItems(items => [...items,  {x: dataElement.Date, y1: dataElement.Cases}]))
-        }
-
-        const countrySummary = await fetch(`https://api.covid19api.com/summary`, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        const countryData = await countrySummary.json()
-
-        if (countrySummary.ok) {
-            const countries = countryData.Countries
-            const summary = (countries.filter( function(item){return (item.CountryCode===countryCode.toUpperCase());} ))[0];
-            setDataSummary(dataSummary => summary)
-
-        }
-    });*/
-
 
     return(<>
             <Header />
@@ -91,9 +70,22 @@ export default function CountryPage(){
         <div className="container mt-3">
 
             <h1>Total Cases</h1>
-            {loading? <h1>Chargement</h1> : <Chart data={graphData}/> }
+            {loading? <h1>Loading</h1> : <Chart data={graphData}/> }
         </div>
-            {posts && posts.map((post, key) => <Post key={key} post={post}></Post>)}
+            {posts &&
+            <section className="container">
+            <div className="row">
+                <h2>Posts about {summary.Country}</h2>
+            </div>
+            <div className="row">
+                {posts.map((post, key) => post && <Post key={key} post={post}></Post>)}
+            </div>
+            </section>}
+
+                {user && user.isAdmin &&
+                <div className="container d-flex justify-content-center">
+                    <PostType country={{name: summary.Country, code: countryCode}} onSubmit={(data) => addPost(data, user)}/>
+                </div>}
 
     </>
     )
