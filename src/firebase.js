@@ -133,6 +133,9 @@ export const getPostsDocumentsByCountry = async countryCode => {
 
 
 export const getPostsDocumentsByUser = async uid => {
-    const snapshot = await firestore.collection('post').where("user/uid", "==", uid ).get()
-    return snapshot.exists ? snapshot.docs : null
+    const snapshot = await firestore.collection('posts').where(new firebase.firestore.FieldPath('post', 'user', 'uid'), "==", uid ).get()
+    const posts = snapshot.docs.map(post => {
+        return post.data()["post"]
+    })
+    return posts
 }
