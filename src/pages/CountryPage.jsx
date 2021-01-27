@@ -8,6 +8,7 @@ import {usePosts} from "../hooks/usePosts";
 import {useApi} from "../hooks/useApi";
 import {useSummary} from "../hooks/useSummary";
 import {Header} from "semantic-ui-react";
+import Post from "../Components/Post";
 
 export default function CountryPage(){
     const { countryCode } = useParams()
@@ -43,9 +44,9 @@ export default function CountryPage(){
     /*************************************
      *          Posts managment
      *************************************/
-    const { posts, fetchPostsByCountry } = usePosts()
+    const { load: load_posts, loading: loading_posts, items: posts } = usePosts(countryCode, null)
     useEffect(() => {
-        fetchPostsByCountry("AF")
+        load_posts()
     }, [])
     useEffect(() => {
         console.log(posts)
@@ -81,7 +82,7 @@ export default function CountryPage(){
             <Header />
             {summary && <div className="container-fluid">
             <div className="row d-flex justify-content-center align-items-center">
-                <img src={`http://www.geognos.com/api/en/countries/flag/${summary.CountryCode}.png`} className="countrybox" />
+                <img src={`http://www.geognos.com/api/en/countries/flag/${countryCode}.png`} className="countrybox" />
             </div>
             <div className="row  d-flex justify-content-center">
                 <h1 className="text-primary text-center">{summary.Country}</h1>
@@ -95,11 +96,5 @@ export default function CountryPage(){
             {posts && posts.map((post, key) => <Post key={key} post={post}></Post>)}
 
     </>
-    )
-}
-
-const Post = (post) => {
-    return(
-        JSON.stringify(post)
     )
 }

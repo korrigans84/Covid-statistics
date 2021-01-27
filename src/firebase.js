@@ -107,7 +107,7 @@ export const generatePostDocument = async (post, additionalData) => {
             console.error("Error creating user document", error);
         }
     }
-    return getPostDocument(post.uid);
+    return;
 };
 const getPostDocument = async uid => {
     if (!uid) return null;
@@ -133,7 +133,7 @@ export const getPostsDocumentsByCountry = async countryCode => {
 
 
 export const getPostsDocumentsByUser = async uid => {
-    const snapshot = await firestore.collection('posts').where(new firebase.firestore.FieldPath('post', 'user', 'uid'), "==", uid ).get()
+    const snapshot = await firestore.collection('posts').where(new firebase.firestore.FieldPath('post', 'user_uid'), "==", uid ).get()
     const posts = snapshot.docs.map(post => {
         return post.data()["post"]
     })

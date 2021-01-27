@@ -1,15 +1,17 @@
 import {UserContext} from "../providers/UserProvider";
 import React, {useContext, useEffect, useState} from "react";
-import {signOut} from "../firebase";
-import {Container, Header} from "semantic-ui-react";
+import {Button, CardContent, Container, Header} from "semantic-ui-react";
 import PostType from "../Components/form/PostType";
 import {usePosts} from "../hooks/usePosts";
 import uuid from 'react-uuid'
 import Post from "../Components/Post";
+
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+
 export default function ProfilePage() {
 
     const {user} = useContext(UserContext);
-    const {addPost, fetchPostsByUser, posts} = usePosts()
+    const {load, items: posts, addPost} = usePosts(null, user.uid)
     const [error, setError] = useState(null)
     const handlePostSubmit = (data) => {
             data= {
@@ -24,9 +26,11 @@ export default function ProfilePage() {
             console.log(data)
     }
     useEffect(() => {
-        fetchPostsByUser(user.uid)
-        console.log(posts)
+        load()
     }, [])
+    useEffect(() => {
+        console.log(posts)
+    }, [posts])
     return (
         <div>
         <Header />
@@ -39,14 +43,14 @@ export default function ProfilePage() {
             </div>
         </Container>
 
-        <Container>
+            {posts && <Container>
             <div className="row">
                 <h2>Your recents posts</h2>
             </div>
             <div className="row">
                 {posts.map(post => <Post post={post} />)}
             </div>
-        </Container>
+        </Container>}
         <div>
         </div>
         </div>
