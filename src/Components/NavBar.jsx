@@ -32,8 +32,9 @@ export default function NavBar()
                     <li className="nav-item mr-auto">
                         <Link className="nav-link" to="/posts">Forum</Link>
                     </li>
-
-                    <li className="nav-item ui right aligned">
+                </ul>
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item ">
                         { user ? <><button className="btn btn-outline-danger" onClick={() => { logout() }}>Logout</button>
                                 <Link className="btn btn-outline-secondary" to="/profile">Profile</Link>
                         </>:

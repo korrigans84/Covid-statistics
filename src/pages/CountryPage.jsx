@@ -14,6 +14,7 @@ import {UserContext} from "../providers/UserProvider";
 export default function CountryPage(){
     const {user} = useContext(UserContext)
     const { countryCode } = useParams()
+    const [currentPage, setCurrentPage] = useState(2)
     const [graphData, setGraphData] = useState(null)
     const { summary, load: loadSummary} = useSummary(countryCode)
     /*************************************
@@ -62,29 +63,56 @@ export default function CountryPage(){
                 <h1 className="text-primary text-center">{summary.Country}</h1>
             </div>
     </div> }
-        <div className="container">
-            <TableSummary summary={summary} />
-        </div>
-        <div className="container mt-3">
+            <ul className="nav nav-tabs d-flex justify-content-center mt-4" id="myTab" role="tablist">
+                <li className="nav-item" role="presentation">
+                    <a className={currentPage === 1 ? "nav-link active": "nav-link"} onClick={() => setCurrentPage(1)}
+                     >Summary</a>
+                </li>
+                <li className="nav-item" role="presentation">
+                    <a className={currentPage === 2 ? "nav-link active": "nav-link"}onClick={() => setCurrentPage(2)}>Evolution</a>
+                </li>
+                <li className="nav-item" role="presentation">
+                    <a className={currentPage === 3 ? "nav-link active": "nav-link"} onClick={() => setCurrentPage(3)}>Posts</a>
+                </li>
+            </ul>
+            <div className="tab-content" id="myTabContent">
+                <div className={currentPage === 1 ?"tab-pane fade show active" : "tab-pane fade"} id="summary" role="tabpanel" aria-labelledby="home-tab">
+                    {!summary ? <h1>Loading</h1> : <TableSummary summary={summary} />}
+                </div>
+                <div className={currentPage === 2 ?"tab-pane fade show active" : "tab-pane fade"} id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <h1> 1 year cases</h1>
+                    {loading? <h1>Loading</h1> : <Chart data={graphData}/> }
+                </div>
+                <div className={currentPage === 3 ?"tab-pane fade show active" : "tab-pane fade"} id="home" role="tabpanel" aria-labelledby="home-tab">
+                    {posts &&
+                    <section className="container">
+                        <div className="row">
+                            <h2>Posts about {summary.Country}</h2>
+                        </div>
+                        <div className="row">
+                            {posts.map((post, key) => post && <Post key={key} post={post}></Post>)}
+                        </div>
+                        {user && user.isAdmin ?
+                            <div className="row d-flex justify-content-center">
+                                <PostType country={{name: summary.Country, code: countryCode}} onSubmit={(data) => addPost(data, user)}/>
+                            </div>:
+                            <div className="d-flex justify-content-center">
+                                <div className="row">
+                                    <div className="col-12">
+                                        <p className="text-center">You need to be an administrator to be able to post here</p>
 
-            <h1>Total Cases</h1>
-            {loading? <h1>Loading</h1> : <Chart data={graphData}/> }
-        </div>
-            {posts &&
-            <section className="container">
-            <div className="row">
-                <h2>Posts about {summary.Country}</h2>
+                                    </div>
+                                    <div className="col-12 mt-3">
+                                        <a className="btn btn-outline-light col-12"> Login now </a>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                    </section>}
+                </div>
             </div>
-            <div className="row">
-                {posts.map((post, key) => post && <Post key={key} post={post}></Post>)}
-            </div>
-            </section>}
-
-                {user && user.isAdmin &&
-                <div className="container d-flex justify-content-center">
-                    <PostType country={{name: summary.Country, code: countryCode}} onSubmit={(data) => addPost(data, user)}/>
-                </div>}
-
     </>
     )
 }
@@ -94,50 +122,52 @@ function TableSummary (summary) {
         console.log(summary)
     }, [summary] )
     return(
-        <table className="table table-dark ">
-            <tbody>
-            <tr className="bg-blue text-center text-light">
-                <th scope="row">Total cases</th>
-                <th scope="row">{summary.summary.TotalConfirmed}</th>
-            </tr>
-            <tr className="alert-info text-center">
-                <th scope="row">New cases</th>
-                <th scope="row">{summary.summary.NewConfirmed}</th>
-            </tr>
-            <tr className="bg-blue text-center text-light">
-                <th scope="row">Actives cases</th>
-                <th scope="row">{summary.summary.NewConfirmed + summary.summary.TotalConfirmed}</th>
-            </tr>
+        <div className="container">
+            <table className="table table-striped mt-5">
+                <tbody>
+                <tr className=" text-center text-light">
+                    <th scope="row">Total cases</th>
+                    <th scope="row">{summary.summary.TotalConfirmed}</th>
+                </tr>
+                <tr className=" text-center text-light">
+                    <th scope="row">New cases</th>
+                    <th scope="row">{summary.summary.NewConfirmed}</th>
+                </tr>
+                <tr className="text-center text-light">
+                    <th scope="row">Actives cases</th>
+                    <th scope="row">{summary.summary.NewConfirmed + summary.summary.TotalConfirmed}</th>
+                </tr>
 
 
-            <tr className="bg-primary text-center text-light">
-                <th scope="row">Total Recovered</th>
-                <th scope="row">{summary.summary.TotalRecovered}</th>
-            </tr>
-            <tr className=" text-center text-primary bg-light">
-                <th scope="row">New Recovered</th>
-                <th scope="row">{summary.summary.NewRecovered}</th>
-            </tr>
-            <tr className="bg-primary text-center text-light">
-                <th scope="row">Recovery rate</th>
-                <th scope="row">{Math.round(summary.summary.TotalRecovered / summary.summary.TotalConfirmed*10000)/100} %</th>
-            </tr>
+                <tr className=" text-center text-primary">
+                    <th scope="row">Total Recovered</th>
+                    <th scope="row">{summary.summary.TotalRecovered}</th>
+                </tr>
+                <tr className=" text-center text-primary ">
+                    <th scope="row">New Recovered</th>
+                    <th scope="row">{summary.summary.NewRecovered}</th>
+                </tr>
+                <tr className=" text-center text-primary">
+                    <th scope="row">Recovery rate</th>
+                    <th scope="row">{Math.round(summary.summary.TotalRecovered / summary.summary.TotalConfirmed*10000)/100} %</th>
+                </tr>
 
 
-            <tr className="bg-red text-center text-light border-top">
-                <th scope="row">Total deaths</th>
-                <th scope="row">{summary.summary.TotalDeaths} </th>
-            </tr>
-            <tr className="text-danger text-center bg-light">
-                <th scope="row">New deaths</th>
-                <th scope="row">{summary.summary.NewDeaths} </th>
-            </tr>
-            <tr className="bg-red text-center text-light">
-                <th scope="row">Mortality rate</th>
-                <th scope="row">{Math.round(summary.summary.TotalDeaths / summary.summary.TotalConfirmed*10000)/100} %}</th>
-            </tr>
+                <tr className=" text-center text-danger border-top">
+                    <th scope="row">Total deaths</th>
+                    <th scope="row">{summary.summary.TotalDeaths} </th>
+                </tr>
+                <tr className="text-danger text-center">
+                    <th scope="row">New deaths</th>
+                    <th scope="row">{summary.summary.NewDeaths} </th>
+                </tr>
+                <tr className=" text-center text-danger">
+                    <th scope="row">Mortality rate</th>
+                    <th scope="row">{Math.round(summary.summary.TotalDeaths / summary.summary.TotalConfirmed*10000)/100} %</th>
+                </tr>
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     )
 }

@@ -21,6 +21,8 @@ body {
 }
 
 .header{
+    margin: 0 !important;
+    padding: 0 !important;
     height: 40vh;
     width: 100%;
     background: url("https://firebasestorage.googleapis.com/v0/b/covid-statistics-3fcc4.appspot.com/o/coronavirus.jpg?alt=media") center;
