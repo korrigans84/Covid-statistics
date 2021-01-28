@@ -27,6 +27,10 @@ export default function CountryPage(){
         load()
         await load7days()
     }, [])
+    function handleSubmit (data){
+        console.log(data)
+        addPost(data, user)
+    }
     useEffect(() => {
         if(items !== []){
             setGraphData((items.map(item => {return{x: item.Date, y1: item.Cases}}))
@@ -94,7 +98,7 @@ export default function CountryPage(){
                         </div>
                         {user && user.isAdmin ?
                             <div className="row d-flex justify-content-center">
-                                <PostType country={{name: summary.Country, code: countryCode}} onSubmit={(data) => addPost(data, user)}/>
+                                <PostType country={{label: summary.Country, value: countryCode}} onSubmit={handleSubmit}/>
                             </div>:
                             <div className="d-flex justify-content-center">
                                 <div className="row">
@@ -118,9 +122,6 @@ export default function CountryPage(){
 }
 
 function TableSummary (summary) {
-    useEffect(() => {
-        console.log(summary)
-    }, [summary] )
     return(
         <div className="container">
             <table className="table table-striped mt-5">

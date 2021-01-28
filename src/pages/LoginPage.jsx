@@ -18,23 +18,23 @@ export default function LoginPage(){
     }, [user])
     return(
         <Container text textAlign='center' className="mt-5">
+            <div className="d-flex justify-content-center align-items-center">
+                <div className="row">
+                    <div className="col-12">
+                        <h1 className="text-center"> Login now !</h1>
+                    </div>
+                    <div className="col-12 my-4">
+                        <p className="text-center">For now, you can just sign in with Google.</p>
+                    </div>
+                    <div className="col-12 my-4">
+                        <Button color='google plus' onClick={handleLoginWithGoogle}>
+                            <Icon name='google plus'/>Sign in with Google
+                        </Button>
+                    </div>
+                </div>
 
-            <Divider horizontal>Or</Divider>
+            </div>
 
-            <Button color='google plus' onClick={handleLoginWithGoogle}>
-                <Icon name='google plus'/>Sign in with Google
-            </Button>
-            <Divider horizontal>Or</Divider>
-            <p className="text-center my-3">
-                Don't have an account?{" "}
-                <Link to="/signup" className="text-blue-500 hover:text-blue-600">
-                    Sign up here
-                </Link>
-                <br/>
-                <Link to="passwordReset" className="text-blue-500 hover:text-blue-600">
-                    Forgot Password?
-                </Link>
-            </p>
         </Container>
     )
 }

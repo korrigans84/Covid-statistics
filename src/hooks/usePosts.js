@@ -31,7 +31,7 @@ export function  usePosts(country_code = null, user_id=null){
             post = {
                 uid: uuid(),
                 user_uid: user.uid,
-                country: post.country.value,
+                country: post.country ? post.country : country_code,
                 post_content: post.post_content,
                 title: post.title,
                 createdAt: (new Date()).toString()

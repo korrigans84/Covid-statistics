@@ -97,6 +97,7 @@ export const generatePostDocument = async (post, additionalData) => {
     if (!post) return;
     const postRef = firestore.doc(`posts/${post.uid}`);
     const snapshot = await postRef.get();
+    console.log(post)
     if (!snapshot.exists) {
         try {
             await postRef.set({
