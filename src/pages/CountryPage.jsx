@@ -9,6 +9,8 @@ import {Header} from "semantic-ui-react";
 import Post from "../Components/Post";
 import PostType from "../Components/form/PostType";
 import {UserContext} from "../providers/UserProvider";
+
+
 export default function CountryPage(){
     const {user} = useContext(UserContext)
     const { countryCode } = useParams()
@@ -42,6 +44,7 @@ export default function CountryPage(){
     },[items])
 
 
+
     /*************************************
      *          Posts managment
      *************************************/
@@ -53,12 +56,15 @@ export default function CountryPage(){
             <Header />
             {summary && <div className="container-fluid">
             <div className="row d-flex justify-content-center align-items-center">
-                <img src={`http://www.geognos.com/api/en/countries/flag/${countryCode}.png`} className="countrybox" />
+                <img src={`http://www.geognos.com/api/en/countries/flag/${countryCode.toUpperCase()}.png`} className="countrybox" />
             </div>
             <div className="row  d-flex justify-content-center">
                 <h1 className="text-primary text-center">{summary.Country}</h1>
             </div>
     </div> }
+        <div className="container">
+            <TableSummary summary={summary} />
+        </div>
         <div className="container mt-3">
 
             <h1>Total Cases</h1>
@@ -80,5 +86,58 @@ export default function CountryPage(){
                 </div>}
 
     </>
+    )
+}
+
+function TableSummary (summary) {
+    useEffect(() => {
+        console.log(summary)
+    }, [summary] )
+    return(
+        <table className="table table-dark ">
+            <tbody>
+            <tr className="bg-blue text-center text-light">
+                <th scope="row">Total cases</th>
+                <th scope="row">{summary.summary.TotalConfirmed}</th>
+            </tr>
+            <tr className="alert-info text-center">
+                <th scope="row">New cases</th>
+                <th scope="row">{summary.summary.NewConfirmed}</th>
+            </tr>
+            <tr className="bg-blue text-center text-light">
+                <th scope="row">Actives cases</th>
+                <th scope="row">{summary.summary.NewConfirmed + summary.summary.TotalConfirmed}</th>
+            </tr>
+
+
+            <tr className="bg-primary text-center text-light">
+                <th scope="row">Total Recovered</th>
+                <th scope="row">{summary.summary.TotalRecovered}</th>
+            </tr>
+            <tr className=" text-center text-primary bg-light">
+                <th scope="row">New Recovered</th>
+                <th scope="row">{summary.summary.NewRecovered}</th>
+            </tr>
+            <tr className="bg-primary text-center text-light">
+                <th scope="row">Recovery rate</th>
+                <th scope="row">{Math.round(summary.summary.TotalRecovered / summary.summary.TotalConfirmed*10000)/100} %</th>
+            </tr>
+
+
+            <tr className="bg-red text-center text-light border-top">
+                <th scope="row">Total deaths</th>
+                <th scope="row">{summary.summary.TotalDeaths} </th>
+            </tr>
+            <tr className="text-danger text-center bg-light">
+                <th scope="row">New deaths</th>
+                <th scope="row">{summary.summary.NewDeaths} </th>
+            </tr>
+            <tr className="bg-red text-center text-light">
+                <th scope="row">Mortality rate</th>
+                <th scope="row">{Math.round(summary.summary.TotalDeaths / summary.summary.TotalConfirmed*10000)/100} %}</th>
+            </tr>
+
+            </tbody>
+        </table>
     )
 }

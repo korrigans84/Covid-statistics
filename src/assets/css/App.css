@@ -1,7 +1,15 @@
 @import "~bootstrap";
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
 body{
     box-sizing: border-box !important;
     color: white;
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 body {
     margin: 0;
@@ -34,6 +42,8 @@ body {
 body{
     background-color: #072943;
     filter: brightness(150%);
+    margin: 0;
+    padding: 0;
 }
 
 #form-post .form-control{
@@ -44,8 +54,9 @@ body{
 }
 .covid-spinner{
     position: fixed !important;
-    bottom: 50px;
-    right: 50px;
+    display: block;
+    bottom: 0;
+    right: 0;
     width: 100px;
     -webkit-animation:spin 7s linear infinite;
     -moz-animation:spin 7s linear infinite;
@@ -53,11 +64,15 @@ body{
 }
 .covid-img{
     width: 100px;
-    position: relative;
     height: auto;
 }
 
-
+.bg-blue{
+    background-color: rgba(51, 150, 167, .4);
+}
+.bg-red{
+    background-color: rgba(249, 79, 104, .4);
+}
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
