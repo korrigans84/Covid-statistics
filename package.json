@@ -12,6 +12,7 @@
     "css-loader": "^5.0.1",
     "date.js": "^0.3.3",
     "dot-env": "0.0.1",
+    "dotenv": "^8.2.0",
     "firebase": "^8.2.4",
     "jquery": "^3.5.1",
     "node-sass": "^5.0.0",

@@ -1,18 +1,14 @@
 
 import {useContext, useEffect, useState} from "react";
-import {useFetchForCountry} from "../hooks/useFetchForCountry";
 import Chart from "../Components/Chart";
-import NavBar from "../Components/NavBar";
 import {useParams} from "react-router";
 import {usePosts} from "../hooks/usePosts";
 import {useApi} from "../hooks/useApi";
 import {useSummary} from "../hooks/useSummary";
 import {Header} from "semantic-ui-react";
 import Post from "../Components/Post";
-import PostModal from "../Components/modal/postModal";
 import PostType from "../Components/form/PostType";
 import {UserContext} from "../providers/UserProvider";
-import date from 'date.js'
 export default function CountryPage(){
     const {user} = useContext(UserContext)
     const { countryCode } = useParams()

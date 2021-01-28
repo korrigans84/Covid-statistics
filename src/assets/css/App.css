@@ -34,7 +34,6 @@ body {
 body{
     background-color: #072943;
     filter: brightness(150%);
-
 }
 
 #form-post .form-control{
@@ -43,3 +42,22 @@ body{
 .recharts-tooltip-label{
     color: black!important;
 }
+.covid-spinner{
+    position: fixed !important;
+    bottom: 50px;
+    right: 50px;
+    width: 100px;
+    -webkit-animation:spin 7s linear infinite;
+    -moz-animation:spin 7s linear infinite;
+    animation:spin 7s linear infinite;
+}
+.covid-img{
+    width: 100px;
+    position: relative;
+    height: auto;
+}
+
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
