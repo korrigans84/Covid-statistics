@@ -81,6 +81,9 @@ body{
 .bg-red{
     background-color: rgba(249, 79, 104, .4);
 }
+.body{
+    min-height: 90vh;
+}
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

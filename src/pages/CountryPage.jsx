@@ -5,7 +5,7 @@ import {useParams} from "react-router";
 import {usePosts} from "../hooks/usePosts";
 import {useApi} from "../hooks/useApi";
 import {useSummary} from "../hooks/useSummary";
-import {Divider, Header} from "semantic-ui-react";
+import {Container, Divider, Header} from "semantic-ui-react";
 import Post from "../Components/Post";
 import PostType from "../Components/form/PostType";
 import {UserContext} from "../providers/UserProvider";
@@ -23,7 +23,7 @@ export default function CountryPage(){
     /*************************************
      *          API managment
      *************************************/
-    const { items, load, loading} = useApi(`total/dayone/country/${countryCode}/status/confirmed`, countryCode)
+    const { items, load, loading} = useApi(`total/dayone/country/${countryCode}`, countryCode)
     const {items: sevenDaysData, load: load7days, fromFirebase} = useApi(`total/country/${countryCode}`, countryCode, true)
     useEffect(async () => {
         loadSummary()
@@ -32,7 +32,7 @@ export default function CountryPage(){
     }, [])
     useEffect(() => {
         if(items !== []){
-            setGraphData((items.map(item => {return{x: item.Date, cases: item.Cases}}))
+            setGraphData((items.map(item => {return{x: item.Date, cases: item.Confirmed, deaths: item.Deaths, recovered: item.Recovered}}))
                 .sort((a, b) => {
                 const dateA = (new Date(a.x)).getTime()
                 const dateB = (new Date(b.x)).getTime()
@@ -41,10 +41,9 @@ export default function CountryPage(){
                 }else{
                     return -1
                 }
-            })
-               // .filter(item =>  item.Cases > 0))
-            )
+            }).filter(item => item.cases>0))
         }
+        console.log(graphData)
     },[items])
 
     /*************************************
@@ -100,9 +99,9 @@ export default function CountryPage(){
                                         'rgba(255,206,86, .4)'
                                     ],
                                     hoverBackgroundColor: [
-                                        'rgba(249, 79, 104, .9)',
-                                        'rgba(51, 150, 167, .9)',
-                                        'rgba(255,206,86, .9)'
+                                        'rgba(249,79,104,0.9)',
+                                        'rgba(51,150,167,0.9)',
+                                        'rgba(255,206,86,0.9)'
                                     ]
                                 }]
                             }} /> }
@@ -112,6 +111,7 @@ export default function CountryPage(){
                     }
                 </div>
                 <div className={currentPage === 2 ?"tab-pane fade show active" : "tab-pane fade"} id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <Container>
                     <h1> 1 year cases</h1>
                     <div className="row">
                         <div className="col-12">
@@ -132,7 +132,7 @@ export default function CountryPage(){
                             /> }
                         </div>
                     </div>
-
+                    </Container>
                 </div>
                 <div className={currentPage === 3 ?"tab-pane fade show active" : "tab-pane fade"} id="home" role="tabpanel" aria-labelledby="home-tab">
                     {posts &&
@@ -179,14 +179,15 @@ function reform7daysData(sevenDaysData){
     let recovered = []
     let deaths = []
     let date = []
+    console.log(sevenDaysData)
     sevenDaysData.map((value, key) => {
-        if(key>6){return;}
-        else{
-            active = [...active, value.Active];
-            recovered = [...recovered, value.Recovered];
-            deaths = [...deaths, value.Deaths];
+        if(key>0 && key<8){
+            active = [...active, value.Active - sevenDaysData[key-1].Active];
+            recovered = [...recovered, value.Recovered - sevenDaysData[key-1].Recovered];
+            deaths = [...deaths, value.Deaths - sevenDaysData[key-1].Deaths];
             date = [...date, value.Date]
         }})
+
     const dataset ={
         labels: date,
         datasets: [

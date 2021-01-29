@@ -8,7 +8,7 @@ export default function CountriesPage()
 {
 
     return( <>
-    <Header />
+    <div className="header-custom" />
     <div className="container my-4">
         <h1 className="text-primary text-center my-3">Covid - statistics per countries</h1>
         <p className="text-center">

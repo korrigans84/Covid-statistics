@@ -1,5 +1,5 @@
 import {useCallback, useState} from "react";
-import {deleteF, generateDataByCountry, getDataByCountry} from "../firebase";
+import { generateDataByCountry, getDataByCountry} from "../firebase";
 import date from "date.js";
 
 export const API_URL= "https://api.covid19api.com/"
@@ -23,30 +23,26 @@ export function  useApi(path, country='', saveFirebase=false){
     const [loading, setLoading] = useState(false)
     const [items, setItems] = useState([])
     const [fromFirebase, setFromFirebase] = useState(null)
-    let dataloaded=false;
     if(country !== '' && path === "country"){
         path="country/"+country
     }
 
     const load = useCallback(async () =>{
         if(saveFirebase){
-            const lastWeek = new Date(date( "1 week ago"))
+            const lastWeek = new Date(date( "8 days ago"))
             const now = new Date(date( "now"))
             path+=`?from=${dateformat(lastWeek)}&to=${dateformat(now)}`
         }
 
         setLoading((true))
-        console.log(path)
         //we first try to fetch the data from our Firestore
         if(saveFirebase){
            const data = await getDataByCountry(country.toUpperCase())
             if(data){
                 if(dateformat(new Date(data[6].Date)) === dateformat(new Date()) || dateformat(new Date(data[6].Date)) === dateformat(new Date(date("yesterday")))){
                     setItems(data)
-                    console.log('from firebase')
                     setFromFirebase(true)
                 }else{
-                    console.log("data need update")
                 }
             }
         }
@@ -62,7 +58,6 @@ export function  useApi(path, country='', saveFirebase=false){
             }
             if(saveFirebase && !fromFirebase){
                 await generateDataByCountry(country.toUpperCase(), responseData)
-                console.log("data added to firestore")
             }
         }
         setLoading(false)

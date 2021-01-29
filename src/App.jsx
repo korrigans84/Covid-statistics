@@ -21,6 +21,7 @@ export default function App () {
     return (
 
             <>
+                <div className="body">
                 <NavBar />
             <Switch>
                 <Route path="/country/:countryCode">
@@ -45,7 +46,9 @@ export default function App () {
                     <HomePage />
                 </Route>
             </Switch>
+                </div>
                 <Footer />
+
             </>
     )
 }
