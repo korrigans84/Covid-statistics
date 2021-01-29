@@ -1,41 +1,54 @@
-import {useReducer} from "react";
+import {useCallback, useState, useEffect} from "react";
 import {generatePostDocument, getPostsDocumentsByCountry, getPostsDocumentsByUser} from "../firebase";
+import uuid from "react-uuid";
 
+/**
+ * There is not server-side verification for the post, so the hook is simple.
+ * @param country_code
+ * @param user_id
+ * @returns {{load: (function(): Promise<void>), addPost: addPost, loading: boolean, items: *[]}}
+ */
+export function  usePosts(country_code = null, user_id=null){
 
-function reducer(state, action){
-    switch (action.type){
-        case 'SET_POST':
-            return {...state, posts: action.payload}
-        case 'ADD_POST':
-            return { ...state, posts: [action.payload, ...state.posts]}
-        case 'GET_POST_BY_COUNTRY':
-            return { ...state, posts: [action.payload]}
-        case 'GET_POST_BY_USER':
-            return { ...state, posts: [action.payload]}
-
-    }
-}
-
-export function usePosts(){
-    const [state, dispatch] = useReducer(reducer, {
-        posts: []
-    })
-
-    return{
-        posts: state.posts,
-        fetchPosts: function () {
-            dispatch({type: 'SET_POST', payload: () => {}})
-        },
-        fetchPostsByCountry: function (countryCode) {
-            dispatch({type: 'GET_POST_BY_COUNTRY', payload: getPostsDocumentsByCountry(countryCode)})
-        },
-        addPost: function (post) {
-            generatePostDocument(post)
-            dispatch({type: 'ADD_POST', payload: post})
-        },
-        fetchPostsByUser: function (uid) {
-            dispatch({type: 'GET_POST_BY_USER', payload: getPostsDocumentsByUser(uid)})
+    const [loading, setLoading] = useState(false)
+    const [items, setItems] = useState([])
+    const [count, setCount] = useState(0)
+    const load = useCallback(async () =>{
+        setLoading(true)
+        if(user_id){
+            let posts = await getPostsDocumentsByUser(user_id)
+            setItems(posts)
         }
+        else{
+            let posts = await getPostsDocumentsByCountry(country_code.toUpperCase())
+            setItems(posts)
+        }
+        setLoading(false)
+    }, [])
 
+    const addPost = (post, user=null) => {
+        if(!post.uid){
+            post = {
+                uid: uuid(),
+                user_uid: user.uid,
+                username: user.displayName,
+                country: post.country ? post.country : country_code,
+                post_content: post.post_content,
+                title: post.title,
+                createdAt: (new Date()).toString()
+            }
+        }
+        generatePostDocument(post)
+        setItems([post, ...items])
     }
+    useEffect(() => {
+        setCount(items.length)
+    }, [items])
+    return{
+        items,
+        load,
+        loading,
+        addPost
+    }
+
 }

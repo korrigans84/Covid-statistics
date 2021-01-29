@@ -1,7 +1,21 @@
 @import "~bootstrap";
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
 body{
     box-sizing: border-box !important;
     color: white;
+    display: block;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+input{
+    color: black;
+}
+.css-yk16xz-control{
+    color: black !important;
 }
 body {
     margin: 0;
@@ -12,7 +26,9 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.header{
+.header-custom{
+    margin: 0 !important;
+    padding: 0 !important;
     height: 40vh;
     width: 100%;
     background: url("https://firebasestorage.googleapis.com/v0/b/covid-statistics-3fcc4.appspot.com/o/coronavirus.jpg?alt=media") center;
@@ -34,7 +50,8 @@ body {
 body{
     background-color: #072943;
     filter: brightness(150%);
-
+    margin: 0;
+    padding: 0;
 }
 
 #form-post .form-control{
@@ -43,3 +60,30 @@ body{
 .recharts-tooltip-label{
     color: black!important;
 }
+.covid-spinner{
+    position: fixed !important;
+    display: block;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    -webkit-animation:spin 7s linear infinite;
+    -moz-animation:spin 7s linear infinite;
+    animation:spin 7s linear infinite;
+}
+.covid-img{
+    width: 100px;
+    height: auto;
+}
+
+.bg-blue{
+    background-color: rgba(51, 150, 167, .4);
+}
+.bg-red{
+    background-color: rgba(249, 79, 104, .4);
+}
+.body{
+    min-height: 90vh;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }

@@ -67,6 +67,7 @@ export const generateUserDocument = async (user, additionalData) => {
     }
     return getUserDocument(user.uid);
 };
+
 const getUserDocument = async uid => {
     if (!uid) return null;
     try {
@@ -79,6 +80,18 @@ const getUserDocument = async uid => {
         console.error("Error fetching user", error);
     }
 };
+export const setAdmin = async user => {
+    const userRef = firestore.doc(`users/${user.uid}`);
+    const snapshot = await userRef.get();
+    if (snapshot.exists) {
+        try {
+            await userRef.set(user
+            );
+        } catch (error) {
+            console.error("Error creating user document", error);
+        }
+    }
+}
 
 export const getAllUsersDocument = async () => {
     try {
@@ -97,6 +110,7 @@ export const generatePostDocument = async (post, additionalData) => {
     if (!post) return;
     const postRef = firestore.doc(`posts/${post.uid}`);
     const snapshot = await postRef.get();
+    console.log(post)
     if (!snapshot.exists) {
         try {
             await postRef.set({
@@ -107,7 +121,7 @@ export const generatePostDocument = async (post, additionalData) => {
             console.error("Error creating user document", error);
         }
     }
-    return getPostDocument(post.uid);
+    return;
 };
 const getPostDocument = async uid => {
     if (!uid) return null;
@@ -123,16 +137,38 @@ const getPostDocument = async uid => {
 };
 
 export const getPostsDocumentsByCountry = async countryCode => {
-    const ref =  firestore.collection('posts').where(new firebase.firestore.FieldPath('post', 'country'), '==', countryCode)
-    const snapshot = await ref.get()
+    const snapshot = await firestore.collection('posts').where(new firebase.firestore.FieldPath('post', 'country'), "==", countryCode ).get()
     const posts = snapshot.docs.map(post => {
         return post.data()["post"]
     })
-    return posts;
+    return posts
 }
+export const getDataByCountry = async countryCode => {
+    const doc =  await firestore.collection('country').doc(countryCode.toUpperCase()).get()
+    if(doc.exists){
+        return doc.data().data
+    }
+    else{
+        return null
+    }
+}
+export const generateDataByCountry = async (country_code, data) => {
 
-
+    const postRef = firestore.doc(`country/${country_code.toUpperCase()}`);
+    const snapshot = await postRef.get();
+    if (!snapshot.exists) {
+        try {
+            const x = await postRef.set({data: data});
+        } catch (error) {
+            console.error("Error creating country document", error);
+        }
+    }
+    return;
+}
 export const getPostsDocumentsByUser = async uid => {
-    const snapshot = await firestore.collection('post').where("user/uid", "==", uid ).get()
-    return snapshot.exists ? snapshot.docs : null
+    const snapshot = await firestore.collection('posts').where(new firebase.firestore.FieldPath('post', 'user_uid'), "==", uid ).get()
+    const posts = snapshot.docs.map(post => {
+        return post.data()["post"]
+    })
+    return posts
 }
