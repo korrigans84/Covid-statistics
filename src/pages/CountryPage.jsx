@@ -1,5 +1,5 @@
 
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState, useCallback} from "react";
 import Chart from "../Components/Chart";
 import {useParams} from "react-router";
 import {usePosts} from "../hooks/usePosts";
@@ -10,7 +10,8 @@ import Post from "../Components/Post";
 import PostType from "../Components/form/PostType";
 import {UserContext} from "../providers/UserProvider";
 import TableSummary from "../Components/tables/TableSummary";
-import {Pie} from "react-chartjs-2";
+import {Bar, Pie} from "react-chartjs-2";
+import {Link} from "react-router-dom";
 
 
 export default function CountryPage(){
@@ -23,7 +24,7 @@ export default function CountryPage(){
      *          API managment
      *************************************/
     const { items, load, loading} = useApi(`total/dayone/country/${countryCode}/status/confirmed`, countryCode)
-    const {items: sevenDaysData, load: load7days, fromFirebase} = useApi(`total/country/${countryCode}/status/confirmed`, countryCode, true)
+    const {items: sevenDaysData, load: load7days, fromFirebase} = useApi(`total/country/${countryCode}`, countryCode, true)
     useEffect(async () => {
         loadSummary()
         load()
@@ -31,7 +32,7 @@ export default function CountryPage(){
     }, [])
     useEffect(() => {
         if(items !== []){
-            setGraphData((items.map(item => {return{x: item.Date, y1: item.Cases}}))
+            setGraphData((items.map(item => {return{x: item.Date, cases: item.Cases}}))
                 .sort((a, b) => {
                 const dateA = (new Date(a.x)).getTime()
                 const dateB = (new Date(b.x)).getTime()
@@ -45,7 +46,6 @@ export default function CountryPage(){
             )
         }
     },[items])
-
 
     /*************************************
      *          Posts managment
@@ -113,7 +113,26 @@ export default function CountryPage(){
                 </div>
                 <div className={currentPage === 2 ?"tab-pane fade show active" : "tab-pane fade"} id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h1> 1 year cases</h1>
-                    {loading? <h1>Loading</h1> : <Chart data={graphData}/> }
+                    <div className="row">
+                        <div className="col-12">
+                            {loading? <h1 className="text-center">Loading...</h1> : <Chart data={graphData}/> }
+                        </div>
+                        <div className="col-12">
+                            <h1>7 days evolution</h1>
+                        </div>
+
+                        <div className="col-12">
+                            {loading? <h1 className="text-center">Loading...</h1> :<Bar
+                                data={reform7daysData(sevenDaysData)}
+                                width={100}
+                                height={500}
+                                options={{
+                                    maintainAspectRatio: false
+                                }}
+                            /> }
+                        </div>
+                    </div>
+
                 </div>
                 <div className={currentPage === 3 ?"tab-pane fade show active" : "tab-pane fade"} id="home" role="tabpanel" aria-labelledby="home-tab">
                     {posts &&
@@ -135,8 +154,12 @@ export default function CountryPage(){
 
                                     </div>
                                     <div className="col-12 mt-3">
-                                        <a className="btn btn-outline-light col-12"> Login now </a>
-
+                                        {user ?
+                                            <Link to="/profile" className="btn btn-outline-light col-12"> Edit my
+                                                profile </Link>
+                                            :
+                                            <Link to="/login" className="btn btn-outline-light col-12"> Login </Link>
+                                                }
                                     </div>
 
                                 </div>
@@ -147,6 +170,56 @@ export default function CountryPage(){
             </div>
     </>
     )
+}
+function reform7daysData(sevenDaysData){
+    if(!sevenDaysData){
+        return
+    }
+    let active = []
+    let recovered = []
+    let deaths = []
+    let date = []
+    sevenDaysData.map((value, key) => {
+        if(key>6){return;}
+        else{
+            active = [...active, value.Active];
+            recovered = [...recovered, value.Recovered];
+            deaths = [...deaths, value.Deaths];
+            date = [...date, value.Date]
+        }})
+    const dataset ={
+        labels: date,
+        datasets: [
+            {
+                label: 'Deaths',
+                backgroundColor: 'rgba(255,99,132,0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+                hoverBorderColor: 'rgba(255,99,132,1)',
+                data: deaths
+            },
+            {
+                label: 'Cases',
+                backgroundColor: 'rgba(255,206,86,0.2)',
+                borderColor: 'rgba(255,206,86,1)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(255,206,86,0.4)',
+                hoverBorderColor: 'rgba(255,206,86,1)',
+                data: active
+            },
+            {
+                label: 'Recovered',
+                backgroundColor: 'rgba(0,99,132,0.2)',
+                borderColor: 'rgba(0,99,132,1)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(0,99,132,0.4)',
+                hoverBorderColor: 'rgba(0,99,132,1)',
+                data: recovered
+            }
+        ]}
+
+    return dataset
 }
 
 

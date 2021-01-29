@@ -31,7 +31,7 @@ export default function ProfilePage() {
     }, [user])
     return (
         <div>
-        <Header />
+        <div className="header-custom" />
             <Container>
             {posts.length !== 0 && user.isAdmin ?
                 <>

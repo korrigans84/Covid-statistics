@@ -17,8 +17,7 @@ export default function Chart({data, lines})
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="y1" stroke="#ffffff" activeDot={{ r: 8 }} />
-                    <Line type="monotone" dataKey="uv" stroke="#000000" />
+                    <Line type="monotone" dataKey="cases" stroke="#ffffff" activeDot={{ r: 8 }} />
                 </LineChart>
             </ResponsiveContainer>
         );

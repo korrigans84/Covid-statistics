@@ -18,7 +18,8 @@ export default class UserProvider extends Component {
         }
         this.becomeAdmin = async () => {
             if(this.state.user){
-                this.state.user = {...this.state.user, isAdmin: true}
+                const user= {...this.state.user, isAdmin: true}
+                this.setState(user)
                 await setAdmin(this.state.user)
             }
 
