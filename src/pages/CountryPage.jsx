@@ -1,15 +1,16 @@
 
-import {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Chart from "../Components/Chart";
 import {useParams} from "react-router";
 import {usePosts} from "../hooks/usePosts";
 import {useApi} from "../hooks/useApi";
 import {useSummary} from "../hooks/useSummary";
-import {Header} from "semantic-ui-react";
+import {Divider, Header} from "semantic-ui-react";
 import Post from "../Components/Post";
 import PostType from "../Components/form/PostType";
 import {UserContext} from "../providers/UserProvider";
 import TableSummary from "../Components/tables/TableSummary";
+import {Pie} from "react-chartjs-2";
 
 
 export default function CountryPage(){
@@ -83,7 +84,31 @@ export default function CountryPage(){
                     {!summary ? <h1>Loading</h1> : <>
                     <TableSummary summary={summary} />
                         <div className="row d-flex justify-content-center">{fromFirebase ? "Data comes from our database" : "Our database was updated"}</div>
+                        <div className="row d-flex justify-content-center mt-5">
+                            <h1>Coronavirus distribution in {summary.Country}</h1>
+                            {summary && <Pie data={{
+                                labels: [
+                                    'Deaths',
+                                    'Recovered',
+                                    'Cases'
+                                ],
+                                datasets: [{
+                                    data: [summary.TotalDeaths, summary.TotalRecovered, summary.TotalConfirmed],
+                                    backgroundColor: [
+                                        'rgba(249, 79, 104, .4)',
+                                        'rgba(51, 150, 167, .4)',
+                                        'rgba(255,206,86, .4)'
+                                    ],
+                                    hoverBackgroundColor: [
+                                        'rgba(249, 79, 104, .9)',
+                                        'rgba(51, 150, 167, .9)',
+                                        'rgba(255,206,86, .9)'
+                                    ]
+                                }]
+                            }} /> }
+                        </div>
                     </>
+
                     }
                 </div>
                 <div className={currentPage === 2 ?"tab-pane fade show active" : "tab-pane fade"} id="home" role="tabpanel" aria-labelledby="home-tab">

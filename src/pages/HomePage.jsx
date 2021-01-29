@@ -4,39 +4,54 @@ import {useSummary} from "../hooks/useSummary";
 import {Pie, Bar} from 'react-chartjs-2'
 import {useNinjaApi} from "../hooks/useNinjaApi";
 import TableSummary from "../Components/tables/TableSummary";
-import Message from "../Components/Message";
 
 function createDataset(data){
     if(!data){
         return
     }
-    console.log(Array.from(Object.values(data.cases)))
-    const dataset =
-        [
+    console.log(data)
+    const days = Array.from(Object.keys(data.cases))
+    const _data2 = Array.from(Object.values(data.deaths)).map((value, key) => {return{x: days[key], y: value}})
+    console.log(_data2)
+    const dataset ={
+        labels: days,
+        datasets: [
             {
-                label: "line",
-                data: [{
-                    x: 10,
-                    y: 20
-                }, {
-                    x: 15,
-                    y: 10
-                }],
-                backgroundColor:
-                    'rgba(255, 99, 132, .2)'
-                ,
-                borderColor:
-                    'rgba(255, 99, 132, 1)'
-                ,
+                label: 'Deaths',
+                backgroundColor: 'rgba(255,99,132,0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+                hoverBorderColor: 'rgba(255,99,132,1)',
+                data: Array.from(Object.values(data.deaths))
             },
-        ]
+            {
+                label: 'Cases',
+                backgroundColor: 'rgba(255,99,132,0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(255,99,132,0.4)',
+                hoverBorderColor: 'rgba(255,99,132,1)',
+                data: Array.from(Object.values(data.cases))
+            },
+            {
+                label: 'Recovered',
+                backgroundColor: 'rgba(0,99,132,0.2)',
+                borderColor: 'rgba(0,99,132,1)',
+                borderWidth: 1,
+                hoverBackgroundColor: 'rgba(0,99,132,0.4)',
+                hoverBorderColor: 'rgba(0,99,132,1)',
+                data: Array.from(Object.values(data.recovered))
+            }
+        ]}
+
     return dataset
 }
 const data = {
     labels: [
         'Deaths',
-        'Blue',
-        'Yellow'
+        'Recover',
+        'Cases'
     ],
     datasets: [{
         data: [300, 50, 100],
@@ -98,11 +113,30 @@ export default function HomePage(){
 
             </div>
             <div className="container">
-                {sevenDaysData && <Pie data={data} /> }
+                {sevenDaysData && <Pie data={{
+                    labels: [
+                        'Deaths',
+                        'Recover',
+                        'Cases'
+                    ],
+                    datasets: [{
+                        data: [300, 50, 100],
+                        backgroundColor: [
+                            '#FF6384',
+                            '#36A2EB',
+                            '#FFCE56'
+                        ],
+                        hoverBackgroundColor: [
+                            '#FF6384',
+                            '#36A2EB',
+                            '#FFCE56'
+                        ]
+                    }]
+                }} /> }
             </div>
             <div className="container">
                 {sevenDaysData &&  <Bar
-                    data={dataBar}
+                    data={sevenDaysData}
                     width={100}
                     height={500}
                     options={{
@@ -114,12 +148,3 @@ export default function HomePage(){
     )
 }
 
-
-/*{options &&
-<PieChart width={300} height={300}>
-    <Pie dataKey="value" startAngle={360} endAngle={0} data={options} cx={200} cy={200}  outerRadius={80} fill="#ffffff" label={({index})=> {return options[index].name}} >
-        {
-            options.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} label={entry.name}/>)
-        }
-    </Pie>
-</PieChart>}*/

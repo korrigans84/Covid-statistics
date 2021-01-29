@@ -21,7 +21,6 @@ export default function App () {
 
             <>
                 <NavBar />
-                <Covid />
             <Switch>
                 <Route path="/country/:countryCode">
                     <CountryPage/>
