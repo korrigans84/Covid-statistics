@@ -141,7 +141,7 @@ export default function CountryPage(){
                             <h2>Posts about {summary.Country}</h2>
                         </div>
                         <div className="row">
-                            {posts.map((post, key) => post && <Post key={key} post={post}></Post>)}
+                            {posts.map((post, key) => post && <Post key={key} post={post} fromCountry={true}></Post>)}
                         </div>
                         {user && user.isAdmin ?
                             <div className="row d-flex justify-content-center">
