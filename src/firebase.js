@@ -67,6 +67,7 @@ export const generateUserDocument = async (user, additionalData) => {
     }
     return getUserDocument(user.uid);
 };
+
 const getUserDocument = async uid => {
     if (!uid) return null;
     try {
@@ -79,6 +80,18 @@ const getUserDocument = async uid => {
         console.error("Error fetching user", error);
     }
 };
+export const setAdmin = async user => {
+    const userRef = firestore.doc(`users/${user.uid}`);
+    const snapshot = await userRef.get();
+    if (snapshot.exists) {
+        try {
+            await userRef.set(user
+            );
+        } catch (error) {
+            console.error("Error creating user document", error);
+        }
+    }
+}
 
 export const getAllUsersDocument = async () => {
     try {

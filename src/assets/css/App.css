@@ -11,6 +11,12 @@ body{
     margin: 0 !important;
     padding: 0 !important;
 }
+input{
+    color: black;
+}
+.css-yk16xz-control{
+    color: black !important;
+}
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -20,7 +26,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.header{
+.header-custom{
     margin: 0 !important;
     padding: 0 !important;
     height: 40vh;

@@ -41,9 +41,9 @@ export function  useApi(path, country='', saveFirebase=false){
         if(saveFirebase){
            const data = await getDataByCountry(country.toUpperCase())
             if(data){
-                console.log(data)
-                if(dateformat(new Date(data[6].Date)) === dateformat(new Date()) || dateformat(new Date(data[6].Date)) === dateformat(new Date(date("1 day ago")))){
+                if(dateformat(new Date(data[6].Date)) === dateformat(new Date()) || dateformat(new Date(data[6].Date)) === dateformat(new Date(date("yesterday")))){
                     setItems(data)
+                    console.log('from firebase')
                     setFromFirebase(true)
                 }else{
                     console.log("data need update")
@@ -60,8 +60,7 @@ export function  useApi(path, country='', saveFirebase=false){
             if (response.ok) {
                 setItems(items => items ? [ ...items, ...responseData] : [...responseData])
             }
-            if(saveFirebase && ! fromFirebase){
-                console.log(responseData)
+            if(saveFirebase && !fromFirebase){
                 await generateDataByCountry(country.toUpperCase(), responseData)
                 console.log("data added to firestore")
             }

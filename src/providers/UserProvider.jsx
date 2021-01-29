@@ -1,11 +1,11 @@
 import React, { Component, createContext } from "react";
-import {auth, generateUserDocument, signInWithGoogle, signOut} from "../firebase";
-import {useHistory} from "react-router-dom";
+import {auth, generateUserDocument, setAdmin, signInWithGoogle, signOut} from "../firebase";
 
 export const UserContext = createContext({
     user: null,
     loginWithGoogle: () => {},
-    logout: () => {}
+    logout: () => {},
+    becomeAdmin: async () => {}
 });
 export default class UserProvider extends Component {
     constructor(props) {
@@ -16,13 +16,22 @@ export default class UserProvider extends Component {
         this.loginWithGoogle = () => {
             const user = signInWithGoogle()
         }
+        this.becomeAdmin = async () => {
+            if(this.state.user){
+                this.state.user = {...this.state.user, isAdmin: true}
+                await setAdmin(this.state.user)
+            }
+
+        }
         this.state= {
             user: null,
             loginWithGoogle: this.loginWithGoogle,
-            logout: this.logout
+            logout: this.logout,
+            becomeAdmin: this.becomeAdmin
 
         };
     }
+
 
     componentDidMount = async () => {
         auth.onAuthStateChanged(async userAuth => {

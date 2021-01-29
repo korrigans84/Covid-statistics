@@ -62,3 +62,15 @@ function Covid () {
     </a>, document.body)
     )
 }
+function Toastr () {
+    const message = {
+        type: "success",
+        message: "Hi"
+    }
+   // const message = JSON.parse(sessionStorage.getItem("toastr"))
+    if(!message){
+        return <></>
+    }
+    //return <Toastr toastType={message.type} >{message.message}</Toastr>
+    return <></>
+}

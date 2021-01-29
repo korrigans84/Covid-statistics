@@ -6,11 +6,9 @@ import {usePosts} from "../hooks/usePosts";
 import uuid from 'react-uuid'
 import Post from "../Components/Post";
 
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
-
 export default function ProfilePage() {
 
-    const {user} = useContext(UserContext);
+    const {user, becomeAdmin} = useContext(UserContext);
     const {load, items: posts, addPost} = usePosts(null, user.uid)
     const [error, setError] = useState(null)
     const handlePostSubmit = (data) => {
@@ -29,28 +27,29 @@ export default function ProfilePage() {
         load()
     }, [])
     useEffect(() => {
-        console.log(posts)
-    }, [posts])
+        console.log(user)
+    }, [user])
     return (
         <div>
         <Header />
+            <Container>
+            {posts.length !== 0 && user.isAdmin ?
+                <>
+                <div className="row">
+                    <h2>Your recents posts</h2>
+                </div>
+                <div className="row">
+                    {posts.map(post => <Post post={post} />)}
+                </div>
+                </>
+             : <h2>You never wrote a post</h2>}
+            </Container>
+            {!user.isAdmin && <button className="btn btn-outline-light w-100" onClick={() => {becomeAdmin()}}>Become editor</button> }
         <Container >
-            <div className="row">
-                <h2>Create a post :</h2>
-            </div>
-            <div className="row d-flex justify-content-center">
-                { user.isAdmin && <PostType onSubmit={handlePostSubmit} error={error} />}
-            </div>
+                { user.isAdmin && <PostType onSubmit={handlePostSubmit} error={error} />  }
         </Container>
 
-            {posts && <Container>
-            <div className="row">
-                <h2>Your recents posts</h2>
-            </div>
-            <div className="row">
-                {posts.map(post => <Post post={post} />)}
-            </div>
-        </Container>}
+
         <div>
         </div>
         </div>

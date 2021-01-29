@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.2",
     "@react-firebase/auth": "^0.2.10",
     "@react-firebase/firestore": "^0.5.5",
     "ag-grid-community": "^24.1.0",
@@ -15,7 +16,6 @@
     "dotenv": "^8.2.0",
     "firebase": "^8.2.4",
     "jquery": "^3.5.1",
-    "node-sass": "^5.0.0",
     "popper.js": "^1.16.1",
     "react": "^17.0.1",
     "react-chartjs-2": "^2.11.1",
@@ -25,9 +25,9 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
     "react-select": "^4.0.2",
+    "react-toastify": "^7.0.2",
     "react-uuid": "^1.0.2",
     "recharts": "^1.8.5",
-    "sass-loader": "^10.1.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
     "style-loader": "^2.0.0"
@@ -54,5 +54,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "webpack": "4.44.2",
+    "webpack-cli": "^4.4.0"
   }
 }

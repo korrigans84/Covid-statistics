@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import {Header} from "semantic-ui-react";
 import {useSummary} from "../hooks/useSummary";
-import {Cell, PieChart} from "recharts";
 import {Pie, Bar} from 'react-chartjs-2'
 import {useNinjaApi} from "../hooks/useNinjaApi";
-
+import TableSummary from "../Components/tables/TableSummary";
+import Message from "../Components/Message";
 
 function createDataset(data){
     if(!data){
@@ -34,7 +34,7 @@ function createDataset(data){
 }
 const data = {
     labels: [
-        'Red',
+        'Deaths',
         'Blue',
         'Yellow'
     ],
@@ -78,9 +78,7 @@ export default function HomePage(){
         loadNinja()
     },[])
     useEffect(() => {
-        console.log(lastDaysData)
         setSevenDaysData(createDataset(lastDaysData))
-        console.log(sevenDaysData)
     }, [lastDaysData])
     useEffect(() => {
             if(summary){
@@ -93,7 +91,8 @@ export default function HomePage(){
         }, [summary])
     return(
         <>
-            <Header />
+            <div className="header-custom" />
+            <TableSummary summary={summary} />
             <div className="dontainer d-flex justify-content-center">
                 {loading ? <h1>Loading</h1> : <h1>Summary for today ( { day && day.toDateString()}) </h1> }
 

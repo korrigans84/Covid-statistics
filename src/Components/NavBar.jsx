@@ -1,7 +1,6 @@
 import React, {useContext} from 'react'
 import {UserContext} from "../providers/UserProvider";
 import {Link, useHistory} from "react-router-dom";
-import {Button} from "semantic-ui-react";
 
 export default function NavBar()
 {
@@ -28,9 +27,8 @@ export default function NavBar()
                     <li className="nav-item mr-auto">
                         <Link className="nav-link" to="/countries">Countries</Link>
                     </li>
-
                     <li className="nav-item mr-auto">
-                        <Link className="nav-link" to="/posts">Forum</Link>
+                        <a href="#" className="nav-link"><i className="fab fa-github"></i>dcsd</a>
                     </li>
                 </ul>
                 <ul className="navbar-nav ml-auto">

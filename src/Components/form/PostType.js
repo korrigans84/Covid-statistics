@@ -30,12 +30,10 @@ export default function PostType ({onSubmit, error, country}) {
                     { country ?
                         <input className="form-control disabled" value={country.value} name="country" disabled ref={register} />
                         :
-                        <Controller
-                            name="country"
-                            control={control}
-                            options={options}
-                            as={Select}
-                        />}
+                        <>
+                            <Controller name="country" as={Select} control={control} options={options} className="w-100 text-dark" />
+                        </>
+                    }
                 </div>
                 <div className="row ">
                 <label htmlFor="post_content" >Tap your post here</label>

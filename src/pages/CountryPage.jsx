@@ -9,6 +9,7 @@ import {Header} from "semantic-ui-react";
 import Post from "../Components/Post";
 import PostType from "../Components/form/PostType";
 import {UserContext} from "../providers/UserProvider";
+import TableSummary from "../Components/tables/TableSummary";
 
 
 export default function CountryPage(){
@@ -21,16 +22,12 @@ export default function CountryPage(){
      *          API managment
      *************************************/
     const { items, load, loading} = useApi(`total/dayone/country/${countryCode}/status/confirmed`, countryCode)
-    const {items: sevenDaysData, load: load7days} = useApi(`total/country/${countryCode}/status/confirmed`, countryCode, true)
+    const {items: sevenDaysData, load: load7days, fromFirebase} = useApi(`total/country/${countryCode}/status/confirmed`, countryCode, true)
     useEffect(async () => {
         loadSummary()
         load()
         await load7days()
     }, [])
-    function handleSubmit (data){
-        console.log(data)
-        addPost(data, user)
-    }
     useEffect(() => {
         if(items !== []){
             setGraphData((items.map(item => {return{x: item.Date, y1: item.Cases}}))
@@ -49,7 +46,6 @@ export default function CountryPage(){
     },[items])
 
 
-
     /*************************************
      *          Posts managment
      *************************************/
@@ -57,6 +53,9 @@ export default function CountryPage(){
     useEffect(() => {
         load_posts()
     }, [])
+    function handleSubmit (data){
+        addPost(data, user)
+    }
     return(<>
             <Header />
             {summary && <div className="container-fluid">
@@ -81,7 +80,11 @@ export default function CountryPage(){
             </ul>
             <div className="tab-content" id="myTabContent">
                 <div className={currentPage === 1 ?"tab-pane fade show active" : "tab-pane fade"} id="summary" role="tabpanel" aria-labelledby="home-tab">
-                    {!summary ? <h1>Loading</h1> : <TableSummary summary={summary} />}
+                    {!summary ? <h1>Loading</h1> : <>
+                    <TableSummary summary={summary} />
+                        <div className="row d-flex justify-content-center">{fromFirebase ? "Data comes from our database" : "Our database was updated"}</div>
+                    </>
+                    }
                 </div>
                 <div className={currentPage === 2 ?"tab-pane fade show active" : "tab-pane fade"} id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h1> 1 year cases</h1>
@@ -121,54 +124,4 @@ export default function CountryPage(){
     )
 }
 
-function TableSummary (summary) {
-    return(
-        <div className="container">
-            <table className="table table-striped mt-5">
-                <tbody>
-                <tr className=" text-center text-light">
-                    <th scope="row">Total cases</th>
-                    <th scope="row">{summary.summary.TotalConfirmed}</th>
-                </tr>
-                <tr className=" text-center text-light">
-                    <th scope="row">New cases</th>
-                    <th scope="row">{summary.summary.NewConfirmed}</th>
-                </tr>
-                <tr className="text-center text-light">
-                    <th scope="row">Actives cases</th>
-                    <th scope="row">{summary.summary.NewConfirmed + summary.summary.TotalConfirmed}</th>
-                </tr>
 
-
-                <tr className=" text-center text-primary">
-                    <th scope="row">Total Recovered</th>
-                    <th scope="row">{summary.summary.TotalRecovered}</th>
-                </tr>
-                <tr className=" text-center text-primary ">
-                    <th scope="row">New Recovered</th>
-                    <th scope="row">{summary.summary.NewRecovered}</th>
-                </tr>
-                <tr className=" text-center text-primary">
-                    <th scope="row">Recovery rate</th>
-                    <th scope="row">{Math.round(summary.summary.TotalRecovered / summary.summary.TotalConfirmed*10000)/100} %</th>
-                </tr>
-
-
-                <tr className=" text-center text-danger border-top">
-                    <th scope="row">Total deaths</th>
-                    <th scope="row">{summary.summary.TotalDeaths} </th>
-                </tr>
-                <tr className="text-danger text-center">
-                    <th scope="row">New deaths</th>
-                    <th scope="row">{summary.summary.NewDeaths} </th>
-                </tr>
-                <tr className=" text-center text-danger">
-                    <th scope="row">Mortality rate</th>
-                    <th scope="row">{Math.round(summary.summary.TotalDeaths / summary.summary.TotalConfirmed*10000)/100} %</th>
-                </tr>
-
-                </tbody>
-            </table>
-        </div>
-    )
-}
