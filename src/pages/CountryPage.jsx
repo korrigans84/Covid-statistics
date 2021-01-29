@@ -58,7 +58,7 @@ export default function CountryPage(){
         addPost(data, user)
     }
     return(<>
-            <Header />
+            <div className="header-custom" />
             {summary && <div className="container-fluid">
             <div className="row d-flex justify-content-center align-items-center">
                 <img src={`http://www.geognos.com/api/en/countries/flag/${countryCode.toUpperCase()}.png`} className="countrybox" />

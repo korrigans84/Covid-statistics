@@ -28,7 +28,7 @@ export default function NavBar()
                         <Link className="nav-link" to="/countries">Countries</Link>
                     </li>
                     <li className="nav-item mr-auto">
-                        <a href="#" className="nav-link"><i className="fab fa-github"></i>dcsd</a>
+                        <a href="https://github.com/korrigans84/Covid-statistics" className="nav-link"><i className="fab fa-github"></i></a>
                     </li>
                 </ul>
                 <ul className="navbar-nav ml-auto">

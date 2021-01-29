@@ -11,6 +11,7 @@ import NavBar from "./Components/NavBar";
 import Logout from "./Components/Auth/Logout";
 import dotenv from 'dotenv'
 import {createPortal} from "react-dom";
+import Footer from "./Components/Footer";
 
 
 export default function App () {
@@ -44,6 +45,7 @@ export default function App () {
                     <HomePage />
                 </Route>
             </Switch>
+                <Footer />
             </>
     )
 }
