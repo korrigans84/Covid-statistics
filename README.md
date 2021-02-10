@@ -7,7 +7,7 @@ This website wad created for a student project of EURECOM.
 
 ## What technology is used?
 
-I use React for the frontend part, and ExpressJS for the Backend part. 
+I use React for the frontend part.
 I also use Firebase for the noSQL Database, Auth system, and the Storage.
 
 ## About the API 
